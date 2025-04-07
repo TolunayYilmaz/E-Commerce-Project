@@ -1,4 +1,4 @@
-import HomeLayout from "../layouts/HomeLayout"
+import HomeLayout from "../layouts/HomeLayout.jsx"
 
 export default function Home(){
 

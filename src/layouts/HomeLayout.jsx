@@ -1,5 +1,5 @@
-import Header from "../components/Header/header";
-import Carousels from "../components/carousel/Carousels";
+import Header from "../components/header/Header.jsx";
+import Carousels from "../components/carousel/Carousels.jsx";
 export default function HomeLayout() {
   return (
     <>

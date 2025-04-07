@@ -1,6 +1,6 @@
 
 import { User,Search,ShoppingCart,AlignRight   } from 'lucide-react';
-import Button from './Button';
+import Button from './Button.jsx';
 
 export default function Header(){
 
