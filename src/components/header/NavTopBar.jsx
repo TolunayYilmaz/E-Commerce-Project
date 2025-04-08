@@ -2,7 +2,7 @@
 import { User,Search,ShoppingCart,AlignRight   } from 'lucide-react';
 import Button from './Button.jsx';
 
-export default function Header(){
+export default function NavTopBar(){
 
 
 

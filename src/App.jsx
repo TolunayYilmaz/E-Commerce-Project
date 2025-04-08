@@ -1,8 +1,13 @@
 import "./App.css";
 import Home from "./pages/Home.jsx";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
-  return <><Home/></>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 }
 
 export default App;
