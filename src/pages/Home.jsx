@@ -1,4 +1,5 @@
 import ShopCardItems from "../components/card/ShopCardItems.jsx";
+import BestProductItems from "../layouts/BestProductItems.jsx";
 import Header from "../layouts/Header.jsx";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <Header />
       <ShopCardItems />
+      <BestProductItems/>
     </main>
   );
 }
