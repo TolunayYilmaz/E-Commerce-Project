@@ -4,7 +4,7 @@ import Header from "../layouts/Header.jsx";
 import PopularProductItems from "../layouts/PopularProductItems.jsx";
 import PopularProductItem from "../layouts/PopularProductItem.jsx";
 import BestProductBotItems from "../layouts/BestProductBotItems.jsx";
-import LogoItems from "../components/logoCompany/logoItems.jsx";
+import LogoItems from "../components/logoCompany/LogoItems.jsx";
 
 
 export default function Home() {
