@@ -1,5 +1,5 @@
-import BestProductImg from "../components/bestProuduct/bestProductImg";
-import BestProductTopbar from "../components/bestProuduct/bestProductTopBar";
+import BestProductImg from "../components/bestProuduct/BestProductImg.jsx";
+import BestProductTopbar from "../components/bestProuduct/BestProductTopBar.jsx";
 
 export default function BestProductItems() {
   return (
