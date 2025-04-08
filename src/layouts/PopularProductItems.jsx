@@ -1,13 +1,11 @@
 
-import PopularProductImg from "../components/popularProduct/PopularProductImg";
-import PopularProductCard from "../components/popularProduct/PopularProductCard";
 import PopularProductBotItems from "../components/popularProduct/PopularProductBotItems";
+import PopularProductItem from "./PopularProductItem";
 
-export default function PopularProductItems() {
+export default function PopularProductItems({color}) {
   return (
     <div>
-      <PopularProductImg />
-      <PopularProductCard />
+      <PopularProductItem color={color}/>
       <PopularProductBotItems/>
     </div>
   );

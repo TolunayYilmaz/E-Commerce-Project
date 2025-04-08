@@ -4,7 +4,7 @@ import BestProductTopbar from "../components/bestProuduct/BestProductTopBar.jsx"
 
 export default function BestProductItems({color}) {
   return (
-    <div className="flex justify-center flex-col items-center ">
+    <div className="flex justify-center flex-col items-center">
       <BestProductImg color={color}/>
       <BestProductTopbar/>
       <BestCardProductItems/>
