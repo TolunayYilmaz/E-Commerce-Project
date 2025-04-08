@@ -2,10 +2,10 @@ import BestCardProductItems from "../components/bestProuduct/BestProductCardItem
 import BestProductImg from "../components/bestProuduct/BestProductImg.jsx";
 import BestProductTopbar from "../components/bestProuduct/BestProductTopBar.jsx";
 
-export default function BestProductItems() {
+export default function BestProductItems({color}) {
   return (
-    <div className="flex justify-center flex-col items-center">
-      <BestProductImg />
+    <div className="flex justify-center flex-col items-center ">
+      <BestProductImg color={color}/>
       <BestProductTopbar/>
       <BestCardProductItems/>
     </div>
