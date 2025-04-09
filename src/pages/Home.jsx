@@ -5,6 +5,7 @@ import PopularProductItems from "../layouts/PopularProductItems.jsx";
 import PopularProductItem from "../layouts/PopularProductItem.jsx";
 import BestProductBotItems from "../layouts/BestProductBotItems.jsx";
 import LogoItems from "../components/logoCompany/LogoItems.jsx";
+import FeaturedProductItems from "../layouts/FeaturedProductItems.jsx";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <PopularProductItem color={"bg-red-400"}/>
       <BestProductBotItems color={"bg-blue-100"}/>
       <LogoItems/>
+      <FeaturedProductItems/>
     </main>
   );
 }
