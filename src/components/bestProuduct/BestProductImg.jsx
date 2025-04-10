@@ -1,7 +1,7 @@
 export default function BestProductImg({color})
 {
 
-    return(<div className= {`w-[92%] h-[664px] ${color}`}>
+    return(<div className= {`w-[92%] h-[664px] ${color} sm:w-[27vw] sm:h-[88vh]` }>
 
         <div className="pl-5 py-4">
         <h6 className="text-sm font-bold text-[#252B42]"> FURNITURE</h6>

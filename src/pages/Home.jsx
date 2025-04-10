@@ -16,7 +16,7 @@ export default function Home() {
       <ShopCardItems />
       <BestProductItems color={"bg-yellow-500"}/>
       <PopularProductItems color={"bg-pink-100"}/>
-      <BestProductItems color={"bg-blue-100"}/>
+      <BestProductItems color={"bg-blue-100"} position={"right"}/>
       <PopularProductItem color={"bg-red-400"}/>
       <BestProductBotItems color={"bg-blue-100"}/>
       <LogoItems/>
