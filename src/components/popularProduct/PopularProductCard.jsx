@@ -1,7 +1,7 @@
 import { LogIn } from "lucide-react";
 export default function PopularProductCard() {
   return (
-    <div className="flex flex-col justify-between items-center gap-16 py-12  sm:bg-[#FAFAFA] sm:h-[649px] sm:w-[400px]">
+    <div className="flex flex-col justify-between items-center gap-16 py-12 sm:gap-0 sm:bg-[#FAFAFA] sm:h-[649px] sm:w-[400px]">
       <div className="flex flex-col items-center justify-center gap-2">
         <h3 className="text-2xl font-bold">MOST POPULAR</h3>
         <p className="mx-auto w-[70%] text-center text-sm text-[#737373] font-normal">
@@ -10,7 +10,7 @@ export default function PopularProductCard() {
         </p>
       </div>
       <div className="w-[348px] h-[226px] bg-slate-400 sm:h-[300px]"></div>
-      <div className="flex flex-col items-center gap-4 ">
+      <div className="flex flex-col items-center gap-3 mt-5  ">
         <p className="text-sm font-bold">English Departmant</p>
         <div className="flex items-center gap-2 ">
           <LogIn
