@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 export default function FooterBot() {
   return (
-    <div className="text-white w-[232px] h-[172px] mx-auto flex flex-col justify-around">
+    <div className="text-white w-[232px] h-[172px] mx-auto flex flex-col justify-around sm:pb-8 sm:flex-row sm:w-[75vw] sm:h-auto sm:justify-between">
       <h6>Made With Love By Finland All Right Reserved </h6>
       <div className=" flex gap-[22px]">
         <FontAwesomeIcon
