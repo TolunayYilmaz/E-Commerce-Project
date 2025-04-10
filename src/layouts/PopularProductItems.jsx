@@ -1,12 +1,21 @@
+import PopularProductBotCards from "../components/popularProduct/PopularProductBotCards";
+import PopularProductImg from "../components/popularProduct/PopularProductImg";
+import PopularProductCard from "../components/popularProduct/PopularProductCard";
+import PopularProductCardSummary from "../components/popularProduct/PopularProductCardSummary";
 
-import PopularProductBotItems from "../components/popularProduct/PopularProductBotItems";
-import PopularProductItem from "./PopularProductItem";
 
-export default function PopularProductItems({color}) {
+
+export default function PopularProductItems({ color }) {
   return (
-    <div>
-      <PopularProductItem color={color}/>
-      <PopularProductBotItems/>
+    <div className="sm:w-[75vw] sm:mx-auto sm:flex sm:flex-col sm:gap-7 ">
+      <div className="sm:flex sm:flex-row">
+        <PopularProductImg color={color} />
+        <div className="sm:hidden">
+          <PopularProductCard />
+        </div>
+        <PopularProductCardSummary/>
+      </div>
+      <PopularProductBotCards />
     </div>
   );
 }
