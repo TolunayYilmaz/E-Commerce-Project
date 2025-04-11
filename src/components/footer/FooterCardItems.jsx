@@ -24,5 +24,5 @@ export default function FooterCardItems(){
       },]
   
 
-    return(<div className="flex justify-center flex-col items-center gap-5 py-[50px] sm:w-[75vw] sm:mx-auto sm:flex-row sm:py-0  ">{cards.map((item,index)=><FooterCard key={index} card={item} />)}</div>);
+    return(<div className="flex justify-center flex-col items-center gap-5 py-[50px] sm:w-[75vw] sm:mx-auto sm:flex-row sm:py-0  sm:flex-wrap xl:flex-nowrap">{cards.map((item,index)=><FooterCard key={index} card={item} />)}</div>);
 }
