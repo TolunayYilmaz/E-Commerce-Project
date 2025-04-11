@@ -7,7 +7,7 @@ export default function BestCardProductItems(){
 
     return (
       <div className="sm:w-[100%] ">
-        <div className="hidden sm:flex flex-row flex-wrap gap-x-10 ">
+        <div className="hidden  sm:h-[700px] sm:overflow-x-hidden sm:justify-center sm:flex sm:gap-x-2 lg:justify-start md:gap-x-4 lg:gap-x-2 xl:gap-x-8  flex-row flex-wrap 2xl:gap-x-10 ">
           {images.map((item, index) => (
             <BestProductCard key={index} ImagePath={item} />
           ))}

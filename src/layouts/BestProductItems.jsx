@@ -9,9 +9,11 @@ export default function BestProductItems({color,position}) {
       <BestProductTopbar/>
       <BestCardProductItems/>
     </div>
-    <div className={`${position==="right"?"flex-row-reverse":""} hidden sm:flex w-[75%] mx-auto gap-4 pb-20`}>
-      <BestProductImg color={color}/>
-      <div className="w-[70%] flex flex-col gap-3">
+    <div className={`${position==="right"?"flex-row-reverse":""} hidden sm:flex sm:w-[95%] md:w-[90%] lg:w-[87%] xl:w-[80%] 2xl:w-[75%] mx-auto gap-4 pb-20`}>
+   
+    <BestProductImg color={color}/>
+    
+      <div className="  sm:w-3/5 md:w-2/3 flex flex-col gap-3 ">
       <BestProductTopbar/>
       <BestCardProductItems/>
       </div>
