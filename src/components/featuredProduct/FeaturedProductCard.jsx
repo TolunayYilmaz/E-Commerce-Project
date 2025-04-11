@@ -3,7 +3,7 @@ import { AlarmClock, ChartArea, ChevronRight } from "lucide-react";
 
 export default function FeaturedProductCard({ card }) {
   return (
-    <div className="w-[330px] h-[606px] mx-auto shadow-sm">
+    <div className="w-[330px] h-[606px]  shadow-sm ">
       <div className="w-full h-[300px] bg-pink-300 ">{card}</div>
       <div className="w-[82%] h-[306px] mx-auto flex flex-col justify-center gap-2 ">
         <div className="flex gap-3">
