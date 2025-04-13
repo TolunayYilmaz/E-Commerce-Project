@@ -29,6 +29,7 @@ import best1 from "../assets/images/best1.png"
 import best2 from "../assets/images/best2.jpg"
 import best3 from "../assets/images/best3.jpg"
 import best4 from "../assets/images/best4.jpg"
+import CarouselsTop from "../layouts/CaroulselsTop.jsx";
 
 
 
@@ -42,6 +43,7 @@ export default function Home() {
   return (
     <main>
       <Header />
+      <CarouselsTop/>
       <ShopCardItems />
       <BestProductItems color={"bg-yellow-500"} images={imagesBestTop} furnitureImg={best}/>
       <PopularProductItems color={"bg-pink-100"} image={popular} cardImage={meat}/>

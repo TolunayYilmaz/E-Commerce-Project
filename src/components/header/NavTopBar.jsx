@@ -28,6 +28,7 @@ export default function NavTopBar() {
             >
               <Button
                 buttonName={"Shop"}
+                push={()=>goToPage("/shop")}
                 logo={<ChevronDown strokeWidth={2} />}
               />
               {showDropdown && (
@@ -80,7 +81,7 @@ export default function NavTopBar() {
         </div>
         <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
           <Button buttonName={"Home"} push={()=>goToPage("/")}/>
-          <Button buttonName={"Product"} push={()=>goToPage("/product")}/>
+          <Button buttonName={"Product"} push={()=>goToPage("/shop")}/>
           <Button buttonName={"Pricing"} push={()=>goToPage("/pricing")}/>
           <Button buttonName={"Contact"} push={()=>goToPage("/contact")}/>
         </div>
