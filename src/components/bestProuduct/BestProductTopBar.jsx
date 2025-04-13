@@ -4,7 +4,7 @@ export default function BestProductTopbar() {
   const buttons = ["Men", "Women", "Accessories"];
   return (
  <>
-    <div className="flex flex-col  py-20 gap-y-[24px]  sm:py-2  lg:h-[50px] lg:py-0 lg:flex-row sm:justify-between lg:mt-5">
+    <div className="flex flex-col  pt-20 pb-5 gap-y-[24px]  sm:py-2  lg:h-[50px] lg:py-0 lg:flex-row sm:justify-between lg:mt-5">
       <h1 className="text-2xl font-bold sm:mx-auto lg:mx-0 lg::w-[210px] sm:text-base lg:mt-4  ">BESTSELLER PRODUCTS</h1>
       <div className="sm:flex sm:mx-auto lg:mx-0">
         {buttons.map((item, index) => (

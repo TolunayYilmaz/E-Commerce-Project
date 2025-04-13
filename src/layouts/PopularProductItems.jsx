@@ -5,16 +5,16 @@ import PopularProductCardSummary from "../components/popularProduct/PopularProdu
 
 
 
-export default function PopularProductItems({ color }) {
+export default function PopularProductItems({ color,image,cardImage }) {
   return (
     <div className="sm:w-[75vw] sm:mx-auto sm:flex sm:flex-col sm:gap-7 ">
       <div className="sm:flex sm:flex-row">
-        <PopularProductImg color={color} />
+        <PopularProductImg color={color} image={image} />
         <div className="sm:hidden">
-          <PopularProductCard />
+          <PopularProductCard image={cardImage} />
         </div>
         <div className="hidden sm:block">
-        <PopularProductCardSummary/>
+        <PopularProductCardSummary image={cardImage}/>
         </div>
       </div>
       <PopularProductBotCards />

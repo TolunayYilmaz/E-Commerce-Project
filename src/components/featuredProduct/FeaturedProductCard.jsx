@@ -1,10 +1,17 @@
 import FeaturedProductButton from "./FeaturedProductButton";
 import { AlarmClock, ChartArea, ChevronRight } from "lucide-react";
 
-export default function FeaturedProductCard({ card }) {
+
+
+export default function FeaturedProductCard({image }) {
   return (
-    <div className="w-[330px] h-[606px]  shadow-sm ">
-      <div className="w-full h-[300px] bg-pink-300 ">{card}</div>
+    <div className="w-[330px] h-[606px] shadow-sm ">
+ <div className="w-full h-[300px] bg-pink-300 relative">
+  <img src={image} alt="Street" className="w-full h-full object-cover" />
+  <h6 className="absolute top-3 left-3 bg-[#E74040] shadow-sm rounded-md w-14 h-6 leading-none text-center pt-1 text-white text-sm z-10">
+    NEW
+  </h6>
+</div>
       <div className="w-[82%] h-[306px] mx-auto flex flex-col justify-center gap-2 ">
         <div className="flex gap-3">
           <FeaturedProductButton name={"Google"} />
@@ -34,7 +41,7 @@ export default function FeaturedProductCard({ card }) {
         </div>
         <div className="flex gap-1">
           <h6 className="text-[#737373] font-bold mt-[6px]">Learn More</h6>
-          <ChevronRight size={30} color="#23a6f0" strokeWidth={1}/>
+          <ChevronRight size={30} color="#23a6f0" strokeWidth={1} />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 
-export default function PopularProductCardSummary() {
+export default function PopularProductCardSummary({image}) {
     return (
       <div className="flex flex-col justify-between items-center gap-16 py-12  sm:bg-[#FAFAFA] sm:h-[649px] sm:w-[400px]">
         <div className="flex flex-col items-center justify-center gap-2">
@@ -9,7 +9,9 @@ export default function PopularProductCardSummary() {
             keystroke away.
           </p>
         </div>
-        <div className="w-[348px] h-[226px] bg-slate-400 sm:h-[300px]"></div>
+        <div className="w-[348px] h-[226px] bg-slate-400 sm:h-[300px]">
+           <img className=" w-full h-full object-cover" src={image}/>
+        </div>
         <div className="flex flex-col items-center gap-4 ">
           <p className="text-sm font-bold">English Departmant</p>
          

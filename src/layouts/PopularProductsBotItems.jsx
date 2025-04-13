@@ -4,16 +4,16 @@ import PopularProductCardSummary from "../components/popularProduct/PopularProdu
 
 
 
-export default function PopularProductBotItems({ color }) {
+export default function PopularProductBotItems({ color,image,cardImage }) {
   return (
-    <div className="sm:w-[75vw] sm:mx-auto sm:flex sm:flex-row  sm:mb-20">
+    <div className="sm:w-[75vw] sm:mx-auto sm:flex sm:flex-row-reverse  sm:mb-20">
       
-        <PopularProductImg color={color} />
+        <PopularProductImg color={color} image={image} />
         <div className="sm:hidden">
-         <PopularProductCardSummary/>
+         <PopularProductCardSummary image={cardImage}/>
         </div>
         <div className="hidden sm:block">
-        <PopularProductCard />
+        <PopularProductCard image={cardImage}/>
         </div>
     
     </div>
