@@ -5,7 +5,7 @@ import BestProductTopbar from "./BestProductTopBar.jsx";
 
 export default function BestProductItems({ color, position,images,furnitureImg }) {
   return (
-    <section>
+    <section >
       <div className="flex justify-center flex-col items-center  sm:hidden">
         <BestProductImg color={color}  image={furnitureImg}/>
         <BestProductTopbar />

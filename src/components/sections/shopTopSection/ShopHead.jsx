@@ -1,10 +1,10 @@
 import ShopPageCardItems from "../../CardList/shopTopList/ShopPageCardItems.jsx";
 import { ChevronRight } from "lucide-react";
 
-export default function ShopHead() {
+export default function ShopHead({cards}) {
   return (
-    <section className="bg-[#FAFAFA] flex flex-col items-center">
-      <header className=" h-[202px] w-full flex justify-around py-3 flex-col items-center">
+    <section className="bg-[#FAFAFA] flex flex-col items-center mb-10 sm:pb-16">
+      <header className=" h-[202px] w-full flex justify-around py-3 flex-col items-center sm:flex-row sm:justify-between sm:w-[72.84%]">
         <h3 className="font-bold">Shop</h3>
         <div className="flex gap-2">
           <a href="" className="no-underline text-black text-sm font-bold">
@@ -22,7 +22,7 @@ export default function ShopHead() {
         </div>
       </header>
 
-      <ShopPageCardItems />
+      <ShopPageCardItems cards={cards}/>
     </section>
   );
 }

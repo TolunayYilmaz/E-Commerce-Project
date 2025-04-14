@@ -15,7 +15,7 @@ export default function BestCardProductItems({images}){
         </div>
         <div className="pb-[200px]  sm:hidden flex flex-col gap-y-10">
           {images.slice(0, 3).map((item, index) => (
-            <BestProductCard key={index} Image={item} />
+            <BestProductCard key={index} Image={item}  />
           ))}
         </div>
       </div>

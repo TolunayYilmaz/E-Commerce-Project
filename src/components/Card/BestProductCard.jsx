@@ -9,6 +9,7 @@ export default function BestProductCard({Image}) {
         <h5 className="text-[#252B42] font-bold text-base">Grafic Design</h5>
         <h5 className="text-[#737373] text-sm">English Departmant</h5>
         <h5 className="font-bold text-[#BDBDBD] text-base">$16.48<span className="text-[#23856D] ml-1">$6.48</span></h5>
+      
       </div>
     </div>
   );
