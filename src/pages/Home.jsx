@@ -1,12 +1,12 @@
-import ShopCardItems from "../components/card/ShopCardItems.jsx";
-import BestProductItems from "../layouts/BestProductItems.jsx";
-import Header from "../layouts/Header.jsx";
-import PopularProductItems from "../layouts/PopularProductItems.jsx";
-import BestProductBotItems from "../layouts/BestProductBotItems.jsx";
-import LogoItems from "../components/logoCompany/LogoItems.jsx";
-import FeaturedProductItems from "../layouts/FeaturedProductItems.jsx";
-import Footer from "../layouts/Footer.jsx";
-import PopularProductBotItems from "../layouts/PopularProductsBotItems.jsx";
+import ShopCardItems from "../components/CardList/shopCardList/ShopCardItems.jsx"
+import BestProductItems from "../components/sections/bestProductSection/BestProductItems.jsx"
+import PopularProductItems from "../components/sections/popularProductSection/PopularProductItems.jsx"
+import BestProductBotItems from "../components/sections/bestProductSection/BestProductBotItems.jsx"
+import LogoCompaniesSection from "../components/sections/logoCompanySection/LogoCompaniesSection.jsx"
+import FeaturedProductItems from "../components/sections/featuredProductSection/FeaturedProductItems.jsx";
+import PopularProductBotItems from "../components/sections/popularProductSection/PopularProductsBotItems.jsx";
+import CarouselsTop from "../components/sections/CarouselSection/CaroulselsTop.jsx"
+
 import et from "../assets/images/et.jpg"
 import elma from "../assets/images/elma.jpg"
 import dondurma from "../assets/images/dondurma.png"
@@ -29,9 +29,6 @@ import best1 from "../assets/images/best1.png"
 import best2 from "../assets/images/best2.jpg"
 import best3 from "../assets/images/best3.jpg"
 import best4 from "../assets/images/best4.jpg"
-import CarouselsTop from "../layouts/CaroulselsTop.jsx";
-
-
 
 
 export default function Home() {
@@ -42,7 +39,6 @@ export default function Home() {
    const bestProductBotItems=[best1,best2,best3,best4]
   return (
     <main>
-      <Header />
       <CarouselsTop/>
       <ShopCardItems />
       <BestProductItems color={"bg-yellow-500"} images={imagesBestTop} furnitureImg={best}/>
@@ -50,9 +46,8 @@ export default function Home() {
       <BestProductItems color={"bg-blue-100"} position={"right"} images={imagesBestBot} furnitureImg={bestBot}/>
       <PopularProductBotItems color={"bg-pink-200"} image={popular2}  cardImage={casheaw}/>
       <BestProductBotItems color={"bg-blue-100"} images={bestProductBotItems}/>
-      <LogoItems logos={logos}/>
+      <LogoCompaniesSection logos={logos}/>
       <FeaturedProductItems images={featureItems}/>
-      <Footer/>
     </main>
   );
 }

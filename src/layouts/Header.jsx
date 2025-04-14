@@ -1,6 +1,4 @@
-import NavTopBar from "../components/header/NavTopBar";
-import Carousels from "../components/carousel/Carousels";
-
+import NavTopBar from "../components/sections/headerSection/NavTopBar.jsx";
 export default function Header() {
   return <NavTopBar />;
 }

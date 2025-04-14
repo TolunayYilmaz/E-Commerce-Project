@@ -1,6 +1,6 @@
-import FooterBot from "../components/footer/FooterBot";
-import FooterCardItems from "../components/footer/FooterCardItems";
-import FooterHeader from "../components/footer/FooterHeader";
+import FooterBot from "../components/sections/footerSection/FooterBot.jsx";
+import FooterCardItems from "../components/CardList/footerList/FooterCardItems.jsx";
+import FooterHeader from "../components/sections/footerSection/FooterHeader.jsx";
 
 export default function Footer() {
   return (

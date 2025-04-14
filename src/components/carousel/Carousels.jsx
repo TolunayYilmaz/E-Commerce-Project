@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import main from "../../assets/images/main.jpg";
-import CarouselButton from "./CarouselButton";
+import CarouselButton from "../Button/CarouselButton.jsx";
 
 export default function Carousels() {
   const products = [
