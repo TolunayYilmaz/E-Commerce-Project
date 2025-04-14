@@ -14,9 +14,15 @@ export default function NavTopBar() {
   const [showDropdown, setShowDropdown] = useState(false);
   const goToPage = useHistoryHook();
 
+  const [visible,setVisible]=useState(false);
+  const toggleVisible = () => {
+    setVisible(prev => !prev);
+  };
+
+
   return (
     <section>
-      <header className="pt-10 flex flex-col gap-20 h-[532px] sm:h-24">
+      <header className="pt-10 flex flex-col gap-20 h-auto pb-10 sm:pb-0 sm:h-24">
         <div className="flex justify-around">
           <h3 className="text-2xl font-bold text-[#252B42]">Bandage</h3>
           <div className="hidden sm:flex sm:gap-x-4 ">
@@ -32,7 +38,7 @@ export default function NavTopBar() {
                 logo={<ChevronDown strokeWidth={2} />}
               />
               {showDropdown && (
-                <div className="absolute left-0 top-5 bg-white shadow-lg text-left border p-4 grid grid-cols-2 gap-4 w-[280px] z-50">
+                <div className="absolute left-0 top-5 rounded-lg bg-white shadow-lg text-left border p-4 grid grid-cols-2 gap-4 w-[280px] z-50">
                   <div>
                     <h4 className="font-bold ">Meyve</h4>
                     <div className="text-sm w-full  flex flex-col">
@@ -72,19 +78,19 @@ export default function NavTopBar() {
               <ShoppingCart className="h-6 text-[#3C403D] sm:text-[#23A6F0]" />
               <p className="sm:text-[#23A6F0] hidden sm:block">1</p>
             </div>
-            <AlignRight className="h-6 text-[#3C403D] sm:hidden" />
-            <div className="flex gap-2 ">
-              <Heart className="h-6 text-[#3C403D] sm:text-[#23A6F0]" />
-              <p className="sm:text-[#23A6F0] hidden sm:block">1</p>
+            <AlignRight className="h-6 text-[#3C403D] hover:text-[#23A6F0] sm:hidden hover:cursor-pointer" onClick={()=>toggleVisible()} />
+            <div className=" gap-2 hidden sm:flex">
+              <Heart className="h-6 text-[#3C403D]  sm:text-[#23A6F0]" />
+              <p className="sm:text-[#23A6F0] k">1</p>
             </div>
           </div>
         </div>
-        <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
+    {visible&&    <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
           <Button buttonName={"Home"} push={()=>goToPage("/")}/>
           <Button buttonName={"Product"} push={()=>goToPage("/shop")}/>
           <Button buttonName={"Pricing"} push={()=>goToPage("/pricing")}/>
           <Button buttonName={"Contact"} push={()=>goToPage("/contact")}/>
-        </div>
+        </div>}
       </header>
     </section>
   );

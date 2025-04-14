@@ -1,4 +1,4 @@
-import Header from "../layouts/Header";
+
 import ShopHead from "../components/sections/shopTopSection/ShopHead.jsx";
 import LogoCompaniesSection from "../components/sections/logoCompanySection/LogoCompaniesSection.jsx";
 
@@ -8,7 +8,7 @@ import logo3 from "../assets/logos/logo-3.png";
 import logo4 from "../assets/logos/logo-4.png";
 import logo5 from "../assets/logos/logo-5.png";
 import logo6 from "../assets/logos/logo-6.png";
-import Footer from "../layouts/Footer.jsx";
+
 
 
 export default function ShopPage() {
