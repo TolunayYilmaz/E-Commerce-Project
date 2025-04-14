@@ -1,4 +1,4 @@
-import ShopCard from "../../Card/ShopCard.jsx";
+import ShopCard from "../../Card/ShopCard"
 import dondurma from "../../../assets/images/dondurma.png";
 import et from "../../../assets/images/et.jpg";
 import elma from "../../../assets/images/elma.jpg";
