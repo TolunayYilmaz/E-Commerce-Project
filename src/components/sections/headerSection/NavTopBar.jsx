@@ -22,7 +22,7 @@ export default function NavTopBar() {
 
   return (
     <section>
-      <header className="pt-10 flex flex-col gap-20 h-auto pb-10 sm:pb-4 sm:h-24">
+      <header className="pt-10 flex flex-col gap-20 h-auto bg-[#F6F6F6]  sm:bg-white pb-10 sm:pb-4 sm:h-24">
         <div className="flex justify-around">
           <h3 className="text-2xl font-bold text-[#252B42]">Bandage</h3>
           <div className="hidden sm:flex sm:gap-x-4 ">
