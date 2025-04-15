@@ -6,13 +6,14 @@ import React, { useEffect } from "react";
 import ShopPage from "./pages/ShopPage.jsx";
 import PageContent from "./layouts/PageContent.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
 
 function App() {
   const ScrollToTop = () => {
     const location = useLocation();
   
     useEffect(() => {
-      window.scrollTo(0,140);
+      window.scrollTo(0,0);
     }, [location.pathname]);
   
     return null;
@@ -29,6 +30,10 @@ function App() {
         </Route>
         <Route path="/productDetail">
          <PageContent children={<ProductDetailPage/>}/>
+        </Route>
+        <Route path="/contact">
+       
+         <PageContent children={<ContactPage/>}/>
         </Route>
       </Switch>
     </Router>
