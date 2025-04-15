@@ -68,7 +68,7 @@ export default function ContactCardList() {
         />
       ))}
     </div>
-    <div className="hidden sm:flex sm:justify-center sm:items-center md:flex-col lg:flex-row">
+    <div className="hidden sm:flex sm:justify-center sm:items-center sm:flex-col lg:flex-row">
     {cards2.map((item, index) => (
         <ContactCard
           key={index}
