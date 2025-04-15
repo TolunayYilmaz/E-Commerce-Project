@@ -87,8 +87,9 @@ export default function NavTopBar() {
         </div>
     {visible&&    <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
           <Button buttonName={"Home"} push={()=>goToPage("/")}/>
-          <Button buttonName={"Product"} push={()=>goToPage("/shop")}/>
-          <Button buttonName={"Pricing"} push={()=>goToPage("/pricing")}/>
+          <Button buttonName={"Shop"} push={()=>goToPage("/shop")}/>
+          <Button buttonName={"About"} push={()=>goToPage("/about")}/>
+          <Button buttonName={"Blog"} push={()=>goToPage("/blog")}/>
           <Button buttonName={"Contact"} push={()=>goToPage("/contact")}/>
         </div>}
       </header>

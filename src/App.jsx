@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ShopPage from "./pages/ShopPage.jsx";
 import PageContent from "./layouts/PageContent.jsx";
+import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route path="/shop">
          <PageContent children={<ShopPage/>}/>
+        </Route>
+        <Route path="/productDetail">
+         <PageContent children={<ProductDetailPage/>}/>
         </Route>
       </Switch>
     </Router>
