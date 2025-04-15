@@ -1,4 +1,4 @@
-import ContactCardList from "../../CardList/contactMidList/contactCardList";
+import ContactCardList from "../../CardList/contactMidList/ContactCardList";
 
 export default function ContactMidSection() {
   return (
