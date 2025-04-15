@@ -17,8 +17,11 @@ export default function ProductDetailCard() {
     );
   }
   return (
-    <div className="w-[348px] mx-auto flex flex-col gap-10">
+    <div className="flex flex-col w-full  justify-center items-center  sm:items-start sm:flex-row sm:justify-around sm:w-full lg:w-[85%] xl:w-[75%]">
+      {/* w-[348px] mx-auto flex flex-col gap-10 xl:w-full xl:flex-row xl:gap-0  xl:justify-between  */}
+      <div className="flex flex-col gap-y-3 w-[348px]  xl:mx-0 lg:w-[490px]  xl:w-[506px] xl:h-[546px]">
       <ProductCarousel/>
+      
       <div className="flex h-[75px] gap-3">
         <img
           src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
@@ -31,9 +34,11 @@ export default function ProductDetailCard() {
           className="h-full w-[100px] object-cover"
         />
       </div>
-      <div className=" flex flex-col gap-y-2 w-[90%] mx-auto">
+      </div>
+      
+      <div className=" flex flex-col gap-y-2 w-[75%]  my-4 sm:w-[300px] md:w-[380px] lg:w-[500px] sm:mx-2 xl:w-[510px] xl:h-[440px] xl:justify-between">
         <h4 className="text-xl">Floating Phone</h4>
-        <div className="flex ">
+        <div className="flex gap-2">
           <div className="flex gap-1">{stars}</div>
           <h6 className="text-[#737373] font-bold text-sm">10 Reviews</h6>
         </div>

@@ -1,9 +1,9 @@
 
 
-export default function ShopCard({headText, midTextFirst, midTextSec, botText, borderRight,imgSrc}) {
+export default function ShopCard({headText, midTextFirst, midTextSec, botText, borderRight,imgSrc,goToPage}) {
  
   return (
-<div className="h-[232px] w-[332px] bg-white relative flex">
+<div className="h-[232px] w-[332px] bg-white relative flex hover:cursor-pointer" onClick={goToPage}>
   <div
     className={`z-10 w-full h-full  border-[#ECECEC] border-b border-t pl-8 flex flex-col justify-center gap-3 ${borderRight && "border-r"}`}
   >

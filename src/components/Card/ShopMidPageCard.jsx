@@ -1,8 +1,8 @@
 
 
-export default function ShopMidPageCard({ image }) {
+export default function ShopMidPageCard({ image,goToPage }) {
   return (
-    <div className="w-[328px] h-[615px]   flex justify-around flex-col items-center sm:w-[188px] lg:w-[238px] 2xl:w-[12.7vw] sm:h-[324px] sm:gap-[10px]">
+    <div className="w-[328px] h-[615px]   flex justify-around flex-col items-center sm:w-[188px] lg:w-[238px] 2xl:w-[12.7vw] sm:h-[324px] sm:gap-[10px] hover:cursor-pointer" onClick={goToPage}>
       <div className=" w-[90%] text-6xl font-bold  flex flex-col justify-end  sm:w-[100%] sm:h-[54%]">
         <img
           src={image}

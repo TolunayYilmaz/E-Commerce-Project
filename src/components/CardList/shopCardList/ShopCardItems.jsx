@@ -2,8 +2,9 @@ import ShopCard from "../../Card/ShopCard"
 import dondurma from "../../../assets/images/dondurma.png";
 import et from "../../../assets/images/et.jpg";
 import elma from "../../../assets/images/elma.jpg";
-
+import { useHistoryHook } from "../../../hooks/useHistoryHook.jsx";
 export default function ShopCardItems() {
+  const goToPage = useHistoryHook();
   const cards = [
     {
       headText: "Your Space",
@@ -41,6 +42,7 @@ export default function ShopCardItems() {
               midTextSec={item.midTextSec}
               botText={item.botText}
               imgSrc={item.img}
+              goToPage={()=>goToPage("/productDetail/"+index)}
             />
           );
         }
@@ -52,6 +54,7 @@ export default function ShopCardItems() {
             midTextSec={item.midTextSec}
             botText={item.botText}
             imgSrc={item.img}
+            goToPage={()=>goToPage("/productDetail/"+index)}
           />
         );
       })}

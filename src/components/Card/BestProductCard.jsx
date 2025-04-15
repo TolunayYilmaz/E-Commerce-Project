@@ -1,7 +1,7 @@
 
-export default function BestProductCard({Image}) {
+export default function BestProductCard({Image,goToPage}) {
   return (
-    <div className="w-[376px] h-[438px]  flex justify-between flex-col items-center sm:w-[188px] lg:w-[188px] 2xl:w-[12.7vw] sm:h-[324px] sm:gap-[10px]">
+    <div className="w-[376px] h-[438px]  flex justify-between flex-col items-center sm:w-[188px] lg:w-[188px] 2xl:w-[12.7vw] sm:h-[324px] sm:gap-[10px] hover:cursor-pointer" onClick={goToPage}>
       <div className=" w-[90%] text-6xl font-bold  flex flex-col justify-end  sm:w-[100%] sm:h-[54%]">
         <img src={Image} className="object-fill w-full mx-auto  sm:h-full sm:w-[95%]"></img>
       </div>

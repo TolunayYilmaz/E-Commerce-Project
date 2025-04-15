@@ -1,6 +1,7 @@
-export default function ShopPageCard({image}) {
+export default function ShopPageCard({image,goToPage}) {
+  
   return (
-    <div className="relative h-[300px] w-[332px]  text-white flex flex-col justify-center items-center gap-2 overflow-hidden sm:w-[205px] sm:h-[223px]">
+    <div className="relative h-[300px] w-[332px]  text-white flex flex-col justify-center items-center gap-2 overflow-hidden sm:w-[205px] sm:h-[223px] hover:cursor-pointer" onClick={goToPage}>
       <img
         src={image}
         alt="background"

@@ -1,8 +1,8 @@
 import { LogIn } from "lucide-react";
 
-export default function PopularProductCard({image}) {
+export default function PopularProductCard({image,goToPage}) {
   return (
-    <div className="flex flex-col justify-between items-center gap-16 py-12 sm:gap-0 sm:bg-[#FAFAFA] sm:h-[649px] sm:w-[400px]">
+    <div className="flex flex-col justify-between items-center gap-16 py-12 sm:gap-0 sm:bg-[#FAFAFA] sm:h-[649px] sm:w-[400px] hover:cursor-pointer" onClick={goToPage}>
       <div className="flex flex-col items-center justify-center gap-2">
         <h3 className="text-2xl font-bold">MOST POPULAR</h3>
         <p className="mx-auto w-[70%] text-center text-sm text-[#737373] font-normal">
