@@ -7,6 +7,7 @@ import ShopPage from "./pages/ShopPage.jsx";
 import PageContent from "./layouts/PageContent.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import TeamPage from "./pages/TeamPage.jsx";
 
 function App() {
   const ScrollToTop = () => {
@@ -32,8 +33,10 @@ function App() {
          <PageContent children={<ProductDetailPage/>}/>
         </Route>
         <Route path="/contact">
-       
          <PageContent children={<ContactPage/>}/>
+        </Route>
+        <Route path="/team">
+        <PageContent children={<TeamPage/>}/>
         </Route>
       </Switch>
     </Router>

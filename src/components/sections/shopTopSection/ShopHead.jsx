@@ -6,6 +6,8 @@ export default function ShopHead({cards}) {
   return (
     <section>
     <HeaderContentBlock pageName={"Shop"} child={<ShopPageCardItems cards={cards}/>}/>
+
+    
     </section>
   );
 }

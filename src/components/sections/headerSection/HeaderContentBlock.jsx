@@ -2,7 +2,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function HeaderContentBlock({child,pageName}) {
   return (
-    <section className="bg-[#FAFAFA] flex flex-col items-center mb-10 sm:pb-16">
+    <section className="bg-[#FAFAFA] flex flex-col items-center mb-10 sm:pb-16 sm:bg-white">
       <header className=" h-[202px] w-full flex justify-around py-3 flex-col items-center sm:flex-row sm:justify-between sm:w-[72.84%]">
         <h3 className="font-bold">{pageName}</h3>
         <div className="flex gap-2">
