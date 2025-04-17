@@ -18,7 +18,7 @@ export default function AboutCardMidList(){
         tag1:"100+",
         tag2:"Top Partners"
     }]
-    return(<div className="flex flex-col items-center gap-y-16">
+    return(<div className="flex flex-col items-center gap-y-16 md:grid md:grid-cols-2 lg:grid-flow-col lg:flex-row">
     {cards.map((item,index)=><AboutCard key={index} tag1={item.tag1} tag2={item.tag2}/>)}
     </div>);
 }

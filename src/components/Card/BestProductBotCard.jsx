@@ -1,6 +1,6 @@
 export default function BestProductBotCard({image,cardbg,shadow,goToPage}) {
     return (
-      <div className={`w-[328px] h-[589px]  flex justify-between flex-col items-center  sm:w-[238px] hover:cursor-pointer sm:h-[442px] sm:justify-around ${cardbg} ${shadow}`}onClick={goToPage}>
+      <div className={`hover:cursor-pointer transform hover:scale-105 transition-all duration-300 w-[328px] h-[589px]  flex justify-between flex-col items-center  sm:w-[238px] hover:cursor-pointer sm:h-[442px] sm:justify-around ${cardbg} ${shadow}`}onClick={goToPage}>
         <div className=" w-[90%] h-[427px] bg-yellow-500 text-6xl font-bold sm:w-[100%] sm:text-2xl sm:h-[280px]">
           <img className="h-full w-full object-cover" src={image}/>
         </div>

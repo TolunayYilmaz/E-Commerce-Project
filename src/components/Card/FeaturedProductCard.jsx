@@ -5,7 +5,7 @@ import { AlarmClock, ChartArea, ChevronRight } from "lucide-react";
 
 export default function FeaturedProductCard({image ,goToPage}) {
   return (
-    <div className="w-[330px] h-[606px] shadow-sm hover:cursor-pointer" onClick={goToPage}>
+    <div className="w-[330px] h-[606px] shadow-sm hover:cursor-pointer transform hover:scale-105 transition-all duration-300" onClick={goToPage}>
  <div className="w-full h-[300px] bg-pink-300 relative">
   <img src={image} alt="Street" className="w-full h-full object-cover" />
   <h6 className="absolute top-3 left-3 bg-[#E74040] shadow-sm rounded-md w-14 h-6 leading-none text-center pt-1 text-white text-sm z-10">

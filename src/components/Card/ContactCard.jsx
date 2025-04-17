@@ -10,7 +10,7 @@ export default function ContactCard({
 }) {
   return (
     <div
-      className={`flex flex-col items-center ${width} ${height} justify-center gap-y-2 ${backColor}`}
+      className={`flex flex-col items-center ${width} ${height} justify-center gap-y-2 ${backColor} hover:cursor-pointer transform hover:scale-105 transition-all duration-300`}
     >
       {logo}
       <div className={`text-center ${textColor}`}>

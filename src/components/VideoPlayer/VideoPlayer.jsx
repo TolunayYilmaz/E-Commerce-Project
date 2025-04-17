@@ -32,7 +32,7 @@ export default function VideoPlayer(){
         }, [isPlaying]);
 
         return(  <div
-            className="relative w-[307px] h-[316px] rounded-lg overflow-hidden shadow-lg"
+            className="relative w-[307px] h-[316px] rounded-lg overflow-hidden shadow-lg sm:w-[67%] sm:h-full sm:mx-auto"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
