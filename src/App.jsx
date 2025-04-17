@@ -8,6 +8,7 @@ import PageContent from "./layouts/PageContent.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import TeamPage from "./pages/TeamPage.jsx";
+import AboutUsPage from "./pages/AboutUsPage.jsx";
 
 function App() {
   const ScrollToTop = () => {
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/team">
         <PageContent children={<TeamPage/>}/>
+        </Route>
+        <Route path="/about">
+        <PageContent children={<AboutUsPage/>}/>
         </Route>
       </Switch>
     </Router>

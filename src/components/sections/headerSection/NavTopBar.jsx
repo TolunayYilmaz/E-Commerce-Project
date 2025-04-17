@@ -60,10 +60,9 @@ export default function NavTopBar() {
                 </div>
               )}
             </div>
-            <Button buttonName={"About"} push={()=>goToPage("/productDetail")} />
-            <Button buttonName={"Blog"} push={()=>goToPage("/blog")}/>
+            <Button buttonName={"About"} push={()=>goToPage("/about")} />
             <Button buttonName={"Contact"} push={()=>goToPage("/contact")}/>
-            <Button buttonName={"Pages"} push={()=>goToPage("/pages")}/>
+            <Button buttonName={"Team"} push={()=>goToPage("/team")}/>
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2">
@@ -88,9 +87,9 @@ export default function NavTopBar() {
     {visible&&    <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
           <Button buttonName={"Home"} push={()=>goToPage("/")}/>
           <Button buttonName={"Shop"} push={()=>goToPage("/shop")}/>
-          <Button buttonName={"About"} push={()=>goToPage("/team")}/>
-          <Button buttonName={"Blog"} push={()=>goToPage("/blog")}/>
+          <Button buttonName={"About"} push={()=>goToPage("/about")}/>
           <Button buttonName={"Contact"} push={()=>goToPage("/contact")}/>
+          <Button buttonName={"Team"} push={()=>goToPage("/Team")}/>
         </div>}
       </header>
     </section>
