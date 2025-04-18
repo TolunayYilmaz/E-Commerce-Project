@@ -65,14 +65,14 @@ export default function NavTopBar() {
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2 ">
-              <div className=" flex justify-center hover:cursor-pointer hover:scale-105 transition-all duration-300" onClick={() => goToPage("/signup")}>
-                <User className="h-6 text-[#3C403D] sm:text-[#23A6F0]" />
+              <div className=" flex justify-center hover:cursor-pointer hover:scale-105 transition-all duration-300 " onClick={() => goToPage("/signup")}>
+                <User className="h-6 text-[#3C403D] sm:text-[#23A6F0] hover:text-[#23A6F0]" />
                 <button className="hidden h-[20px] sm:block sm:text-[#23A6F0] ">
                   Login
                 </button>
               </div>
               <p className="hidden sm:block sm:text-[#23A6F0]">/</p>
-              <button className="hidden h-[20px] sm:block sm:text-[#23A6F0] hover:cursor-pointer hover:scale-105 transition-all duration-300" onClick={() => goToPage("/signup")}>
+              <button className="hidden h-[20px] sm:block sm:text-[#23A6F0] hover:cursor-pointer hover:scale-105 transition-all duration-300 hover:text-[#23A6F0]" onClick={() => goToPage("/signup")}>
                 Register
               </button>
             </div>
@@ -83,7 +83,7 @@ export default function NavTopBar() {
               <p className="sm:text-[#23A6F0] hidden sm:block">1</p>
             </div>
             <AlignRight
-              className="h-6 text-[#3C403D] hover:text-[#23A6F0] sm:hidden hover:cursor-pointer"
+              className="h-6 text-[#3C403D] hover:text-[#23A6F0] sm:hidden hover:cursor-pointer hover:scale-105 transition-all duration-300"
               onClick={() => toggleVisible()}
             />
             <div className=" gap-2 hidden sm:flex">

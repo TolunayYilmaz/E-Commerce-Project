@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import FooterButton from "../Button/FooterButton";
 import FormInput from "../Input/FormInput";
 
 const formData = {
@@ -41,7 +40,7 @@ export default function Form() {
 
   return (
     <form
-      className="flex flex-col items-center min-h-[520px] py-4 justify-center gap-y-6 w-[90%] shadow-md rounded-xl border-1 border-[#23A6F0] mx-auto"
+      className="flex flex-col items-center w-full min-h-[520px] py-4 justify-center gap-y-6 sm:w-[90%] shadow-md rounded-xl border-1 border-[#23A6F0] mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex items-start flex-col justify-between h-[80px] w-[90%]">
@@ -80,10 +79,10 @@ export default function Form() {
             },
           })}
         />
-        {errors.email && <p className="text-red-500 font-medium">{errors.email.message}</p>}
+        {errors.email && <p className="text-red-500 font-medium h-auto">{errors.email.message}</p>}
       </div>
 
-      <div className="flex items-start flex-col justify-between h-[80px] w-[90%]">
+      <div className="flex items-start flex-col justify-between h-auto sm:h-[80px] w-[90%]">
         <label
           htmlFor="password"
           className="text-[#23A6F0] text-xl font-medium"
@@ -105,7 +104,7 @@ export default function Form() {
             },
           })}
         />
-        {errors.password && <p className="text-red-500 font-medium">{errors.password.message}</p>}
+     {errors.password && <p className="text-red-500 font-medium h-auto ">{errors.password.message}</p>}
       </div>
 
       <div className="flex items-start flex-col justify-between h-[80px] w-[90%]">
