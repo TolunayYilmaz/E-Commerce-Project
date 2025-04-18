@@ -1,6 +1,6 @@
 import AboutMidSection from "../components/sections/aboutMidSection/AboutMidSection";
 import AboutHead from "../components/sections/aboutTopSection/AboutHead";
-import teamCard from "../assets/images/teamCard.jpg";
+
 import TeamMidSection from "../components/sections/teamMidSection/TeamMidSection";
 import AboutBotSection from "../components/sections/aboutBotSection/AboutBotSection";
 import profile from "../assets/images/profile.jpg"

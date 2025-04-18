@@ -1,23 +1,47 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import Form from "../components/Form/Form";
+import React from "react";
 import SignUpTopSection from "../components/sections/signUpTopSection/SignUpTopSection";
 import LogoCompaniesSection from "../components/sections/logoCompanySection/LogoCompaniesSection";
-import logo1 from "../assets/logos/logo-1.png"
-import logo2 from "../assets/logos/logo-2.png"
-import logo3 from "../assets/logos/logo-3.png"
-import logo4 from "../assets/logos/logo-4.png"
-import logo5 from "../assets/logos/logo-5.png"
-import logo6 from "../assets/logos/logo-6.png"
+import logo1 from "../assets/logos/logo-1.png";
+import logo2 from "../assets/logos/logo-2.png";
+import logo3 from "../assets/logos/logo-3.png";
+import logo4 from "../assets/logos/logo-4.png";
+import logo5 from "../assets/logos/logo-5.png";
+import logo6 from "../assets/logos/logo-6.png";
+import SignUpMidSection from "../components/sections/signUpMidSection/SignUpMidSection";
+
+import profile from "../assets/images/profile.jpg";
+import profile2 from "../assets/images/profile2.jpg";
+import profile3 from "../assets/images/profile3.jpg";
+import TeamMidSection from "../components/sections/teamMidSection/TeamMidSection";
 
 export default function SignUpPage() {
-
-const logos=[logo1,logo2,logo3,logo4,logo5,logo6]
+  const cards = [
+    {
+      image: profile2,
+      userName: "Emre Şahiner",
+      proffesion: "Software Engineer",
+      profileLink: "https://www.linkedin.com/in/emresahinerjourneyapp/",
+    },
+    {
+      image: profile3,
+      userName: "Fahri Yılmaz",
+      proffesion: "Senior Strategical Procurement Engineer",
+      profileLink: "https://www.linkedin.com/in/fahriyilmaz/",
+    },
+    {
+      image: profile,
+      userName: "Tolunay Yılmaz",
+      proffesion: "Full Stack Developer",
+      profileLink: "https://www.linkedin.com/in/tolunay-y%C4%B1lmaz-197b10202/",
+    },
+  ];
+  const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   return (
-    <main className="w-full flex  flex-col py-4">
-   <SignUpTopSection/>
-    <Form/>
-    <LogoCompaniesSection logos={logos}/>
+    <main className="w-full flex  flex-col gap-y-20">
+      <SignUpTopSection />
+      <SignUpMidSection />
+    <div className="mx-auto  sm:w-full">  <TeamMidSection cards={cards} /></div>
+      <LogoCompaniesSection logos={logos} />
     </main>
   );
 }
