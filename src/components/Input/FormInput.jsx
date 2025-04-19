@@ -1,6 +1,6 @@
 import { AlertCircle } from "lucide-react";
 
-export default function FormInput({invalid,id,type,placeholder,onInvalid=true,register}){
+export default function FormInput({invalid=true,id,type,placeholder,onInvalid,register}){
      
 
     return( <div className="w-full relative ">
