@@ -5,7 +5,7 @@ import axios from "axios";
 import axiosInstance from "../../api/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const formData = {
   name: "",
   email: "",
@@ -29,7 +29,8 @@ export default function Form() {
     });
   };
 
-  const exception = () => toast("Kayıtlı email lütfen başka bir email deneyin :D");
+  const exception = () =>
+    toast("Kayıtlı email lütfen başka bir email deneyin :D");
 
   useEffect(() => {
     axios
@@ -71,7 +72,7 @@ export default function Form() {
       .post("/signup", payload)
       .then(async (response) => {
         console.log("Signup successful:", response.data);
-        await notify("Kayıt Başarılı");//go back toast mesajını bekliyor
+        await notify("Kayıt Başarılı"); //go back toast mesajını bekliyor
         history.goBack();
       })
       .catch((error) => {
@@ -190,20 +191,27 @@ export default function Form() {
         <label htmlFor="role" className="text-[#23A6F0] text-xl font-medium">
           Role:
         </label>
-        <select
-          defaultValue="Customer"
-          className="h-10 w-full pl-2 py-2 text-sm border rounded shadow-md"
-          {...register("roleId", { valueAsNumber: true })}
-        >
-          <option value={roles[0]?.id} disabled selected>
-            {roles[0]?.name}
+       {
+        roles.length!==0&& <select
+        defaultValue="Customer"
+        className="h-10 w-full pl-2 py-2 text-sm border rounded shadow-md"
+        {...register("roleId", { valueAsNumber: true })}
+      >
+        <option value={roles[0]?.id} disabled selected>
+          {roles[0]?.name}
+        </option>
+        {roles.map((role) => (
+          <option key={role.id} value={role.id}>
+            {role.name}
           </option>
-          {roles.map((role) => (
-            <option key={role.id} value={role.id}>
-              {role.name}
-            </option>
-          ))}
-        </select>
+        ))}
+      </select>
+       }
+        {roles.length === 0 && (
+        
+            <CircularProgress  sx={{ color: '#23A6F0' }}/>
+          
+        )}
       </div>
       {watch("roleId") === 2 && (
         <>
