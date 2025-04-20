@@ -6,6 +6,11 @@ import axiosInstance from "../../api/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchRolesIfNeeded } from "../../store/actions/clientThunks";
+
+
 const formData = {
   name: "",
   email: "",
@@ -19,8 +24,10 @@ const formData = {
 };
 
 export default function Form() {
+
+  const dispatch = useDispatch();
   const history = useHistory();
-  const [roles, setRoles] = useState([]);
+  const roles = useSelector((state) => state.client.roles);//thun ile çekildi redux** globalden çekti
   const notify = (data) => {
     return new Promise((resolve) => {
       toast(data, {
@@ -32,16 +39,10 @@ export default function Form() {
   const exception = () =>
     toast("Kayıtlı email lütfen başka bir email deneyin :D");
 
+
   useEffect(() => {
-    axios
-      .get("https://workintech-fe-ecommerce.onrender.com/roles")
-      .then((res) => {
-        setRoles(res.data);
-      })
-      .catch((err) => {
-        console.error("Rol verileri alınamadı:", err);
-      });
-  }, []);
+    dispatch(fetchRolesIfNeeded());//thunk verisi getirdi.
+  }, [dispatch]);
   const {
     register,
     handleSubmit,
