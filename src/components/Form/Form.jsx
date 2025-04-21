@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import FormInput from "../Input/FormInput";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import axiosInstance from "../../api/axiosInstance";
 import { ToastContainer, toast } from "react-toastify";
 import { useHistory } from "react-router-dom";

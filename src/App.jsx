@@ -10,6 +10,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 import TeamPage from "./pages/TeamPage.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 function App() {
   const ScrollToTop = () => {
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path="/signup">
         <PageContent children={<SignUpPage/>}/>
+        </Route>
+        <Route path="/login">
+        <PageContent children={<LoginPage/>}/>
         </Route>
       </Switch>
     </Router>

@@ -12,6 +12,7 @@ import { useHistoryHook } from "../../../hooks/useHistoryHook.jsx";
 
 export default function NavTopBar() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [loginDropdown, setLoginDropdown] = useState(false);
   const goToPage = useHistoryHook();
 
   const [visible, setVisible] = useState(false);
@@ -65,14 +66,51 @@ export default function NavTopBar() {
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2 ">
-              <div className=" flex justify-center hover:cursor-pointer hover:scale-105 transition-all duration-300 " onClick={() => goToPage("/signup")}>
-                <User className="h-6 text-[#3C403D] sm:text-[#23A6F0] hover:text-[#23A6F0]" />
-                <button className="hidden h-[20px] sm:block sm:text-[#23A6F0] ">
+              <div className=" flex justify-center hover:cursor-pointer hover:scale-105 transition-all duration-300 ">
+                <User className="h-6 text-[#3C403D] sm:text-[#23A6F0] hover:text-[#23A6F0] cursor-pointer hidden sm:block" />
+                <div className="sm:hidden">
+                  <User
+                    className="h-6 text-[#3C403D] sm:text-[#23A6F0] hover:text-[#23A6F0] cursor-pointer"
+                    onClick={() => setLoginDropdown(true)}
+                  />
+
+                  {loginDropdown && (
+                    <div className="absolute left-0 top-6 rounded-lg bg-white shadow-lg text-left border p-4 grid grid-cols-2 gap-4 w-[150px] z-60">
+                      <div className="col-span-2 pt-2 ">
+                        <button
+                          className="w-full text-sm text-white bg-[#23A6F0] hover:bg-[#1e90e0] rounded px-2 py-1 mb-2"
+                          onClick={() => {
+                            setLoginDropdown(false);
+                            goToPage("/login");
+                          }}
+                        >
+                          Login
+                        </button>
+                        <button
+                          className="w-full text-sm text-[#23A6F0] border border-[#23A6F0] hover:bg-[#f0faff] rounded px-2 py-1"
+                          onClick={() => {
+                            setLoginDropdown(false);
+                            goToPage("/signup");
+                          }}
+                        >
+                          Sign Up
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <button
+                  className="hidden h-[20px] sm:block sm:text-[#23A6F0] "
+                  onClick={() => goToPage("/login")}
+                >
                   Login
                 </button>
               </div>
               <p className="hidden sm:block sm:text-[#23A6F0]">/</p>
-              <button className="hidden h-[20px] sm:block sm:text-[#23A6F0] hover:cursor-pointer hover:scale-105 transition-all duration-300 hover:text-[#23A6F0]" onClick={() => goToPage("/signup")}>
+              <button
+                className="hidden h-[20px] sm:block sm:text-[#23A6F0] hover:cursor-pointer hover:scale-105 transition-all duration-300 hover:text-[#23A6F0]"
+                onClick={() => goToPage("/signup")}
+              >
                 Register
               </button>
             </div>
