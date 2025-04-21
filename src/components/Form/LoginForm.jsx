@@ -1,23 +1,54 @@
 import FormInput from "../Input/FormInput";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { userLogin } from "../../store/actions/clientThunks";
+import { ToastContainer, toast } from "react-toastify";
+
+import { useEffect } from "react";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+
 const formData = {
   email: "",
   password: "",
 };
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const error = useSelector((state) => state.client.error);
+  const user = useSelector((state) => state.client.user);
+
+  useEffect(() => {
+    if (error) {
+      notify(error); // Hata varsa toastla göster
+    } else if (Object.keys(user).length !== 0) {
+      history.goBack(); // Kullanıcı varsa yönlendir
+    }
+  }, [error, user]);
+
+  const notify = (data) => {
+    return new Promise((resolve) => {
+      toast(data, {
+        onClose: resolve,
+      });
+    });
+  };
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
   } = useForm({
     defaultValues: formData,
     mode: "all",
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const agree = data.agree;
+
+    const user = { email: data.email, password: data.password };
+
+    dispatch(userLogin(user, agree));
   };
   return (
     <form
@@ -54,14 +85,23 @@ export default function LoginForm() {
           register={register("password")}
         />
       </div>
+      <label className="inline-flex items-center mt-3">
+        <input
+          type="checkbox"
+          {...register("agree")}
+          className="form-checkbox h-5 w-5 transition duration-150 ease-in-out  "
+        />
+        <span className="ml-2 text-gray-700">Beni hatırla</span>
+      </label>
       <button
         className={`px-6 py-3 font-bold text-white rounded-[5px] ${
           !isValid ? "bg-slate-600" : "bg-[#23A6F0]"
         }`}
-        disabled={!isValid}
+        disabled={isSubmitting}
       >
         Log In
       </button>
+      <ToastContainer />
     </form>
   );
 }
