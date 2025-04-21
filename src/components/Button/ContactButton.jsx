@@ -5,12 +5,13 @@ export default function ContactButton({
   textColor,
   px,
   py,
-  borderColor
+  borderColor,
+  push
 }) {
   return (
     <button
       className={` ${px}  ${py}  ${bgColor} border-[1px] ${borderColor?borderColor:"border-[#23A6F0]"} font-bold ${textColor} rounded-[5px] ${textSize}`}
-    >
+      onClick={push} >
       {buttonName}
     </button>
   );

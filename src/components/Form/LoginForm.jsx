@@ -21,7 +21,7 @@ export default function LoginForm() {
   };
   return (
     <form
-      className="flex flex-col items-center w-full  py-4 justify-center gap-y-6 sm:w-[90%] shadow-md rounded-xl border-1 border-[#23A6F0] mx-auto"
+      className="flex flex-col items-center w-full  py-4 justify-center gap-y-6 sm:w-[500px] shadow-md rounded-xl border-1 border-[#23A6F0] mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex items-start flex-col justify-between h-[80px] w-[90%]">

@@ -37,10 +37,10 @@ export default function SignUpPage() {
   ];
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   return (
-    <main className="w-full flex  flex-col gap-y-20">
+    <main className="w-full flex  flex-col gap-y-5">
       <SignUpTopSection />
       <SignUpMidSection />
-    <div className="mx-auto  sm:w-full">  <TeamMidSection cards={cards} /></div>
+   
       <LogoCompaniesSection logos={logos} />
     </main>
   );
