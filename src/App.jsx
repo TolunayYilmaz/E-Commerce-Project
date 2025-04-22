@@ -19,6 +19,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import { useDispatch } from "react-redux";
 import { verifyToken } from "./store/actions/clientThunks.js";
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
+import { getCategories } from "./store/actions/productThunks.js";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
   useEffect(() => {
     dispatch(verifyToken());
+    dispatch(getCategories());
   }, [dispatch]);
 
 

@@ -13,9 +13,7 @@ import clothes2 from "../assets/images/clothes2.jpg";
 import clothes3 from "../assets/images/clothes3.jpg";
 import clothes4 from "../assets/images/clothes4.jpg";
 
-import card from "../assets/images/card.jpg";
-import card2 from "../assets/images/card2.png";
-import card3 from "../assets/images/card3.png";
+import { useSelector } from "react-redux";
 
 export default function ShopPage() {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
@@ -33,10 +31,14 @@ export default function ShopPage() {
     clothes3,
     clothes2,
   ];
-const cards=[card,card2,card3,card,card2]
+
+const categories = useSelector((state) => state.product.categories);
+const top5Categories = categories
+  .sort((a, b) => b.rating - a.rating)  // rating değerine göre büyükten küçüğe sırala
+  .slice(0, 5);  // İlk 5 öğeyi al
   return (
     <main>
-      <ShopHead cards={cards}/>
+      <ShopHead cards={top5Categories}/>
       <ShopMidProductsSection images={imgs} />
       <LogoCompaniesSection logos={logos} />
     </main>

@@ -19,7 +19,8 @@ export default function NavTopBar() {
   const [loginDropdown, setLoginDropdown] = useState(false);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.client.user);//thunk ile çekildi redux** globalden çekti
+  const user = useSelector((state) => state.client.user); //thunk ile çekildi redux** globalden çekti
+  const categories = useSelector((state) => state.product.categories);
 
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
@@ -63,8 +64,30 @@ export default function NavTopBar() {
                 logo={<ChevronDown strokeWidth={2} />}
               />
               {showDropdown && (
-                <div className="absolute left-0 top-5 rounded-lg bg-white shadow-lg text-left border p-4 grid grid-cols-2 gap-4 w-[280px] z-[100]">
-                
+                <div className="absolute left-0 top-5 rounded-lg bg-white shadow-lg  border   w-[280px] z-[100] flex justify-around py-3">
+                  <div className="flex flex-col gap-1">
+                    <h2 className="text-lg text-[#3C403D] ">Kadın</h2>
+                    {categories.map((item) =>
+                      item.id <= 8 ? (
+                        <a key={item.id} className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"  href={`/shop/kadin/${item.title.toLowerCase()}/${item.id}`}>
+                      
+                          {" "}
+                          {item.title}
+                        </a>
+                      ) : null
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h2 className="text-lg text-[#3C403D]">Erkek</h2>
+                    {categories.map((item) =>
+                      item.id >8 ? (
+                        <a key={item.id} className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"  href={`/shop/erkek/${item.title.toLowerCase()}/${item.id}`}>
+                    
+                          {item.title}
+                        </a>
+                      ) : null
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -75,7 +98,10 @@ export default function NavTopBar() {
 
           <div className="flex gap-2 items-end">
             {Object.keys(user).length > 0 ? (
-              <div className="login-dropdown-area relative font-bold text-[#3C403D] sm:text-[#23A6F0]" onMouseLeave={()=>setLoginDropdown(false)}>
+              <div
+                className="login-dropdown-area relative font-bold text-[#3C403D] sm:text-[#23A6F0]"
+                onMouseLeave={() => setLoginDropdown(false)}
+              >
                 <div
                   className="flex items-center gap-2 hover:scale-105 transition-all duration-300 hover:cursor-pointer"
                   onClick={() => setLoginDropdown((prev) => !prev)}
@@ -109,7 +135,10 @@ export default function NavTopBar() {
                 )}
               </div>
             ) : (
-              <div className="flex gap-2" onMouseLeave={()=> setLoginDropdown(false)}>
+              <div
+                className="flex gap-2"
+                onMouseLeave={() => setLoginDropdown(false)}
+              >
                 <div className="hidden sm:flex hover:cursor-pointer transform hover:scale-105 transition-all duration-300">
                   <User className="h-6 text-[#3C403D] sm:text-[#23A6F0]" />
                   <button

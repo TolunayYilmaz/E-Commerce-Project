@@ -10,7 +10,7 @@ import {
 } from "../actions/productAction";
 
 const productInitialState = {
-  catregories: [{}],
+  categories: [],
   productList: [{}],
   total: 0,
   limit: 25,
@@ -22,7 +22,7 @@ const productInitialState = {
 const productReducer = (state = productInitialState, action) => {
   switch (action.type) {
     case SET_CATEGORIES:
-      return { ...state, catregories: action.payload };
+      return { ...state, categories: action.payload };
 
     case SET_PRODUCTLIST:
       return { ...state, productList: action.payload };
