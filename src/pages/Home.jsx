@@ -42,6 +42,7 @@ export default function Home() {
    const featureItems=[street,umbrella,car]
    const logos=[logo1,logo2,logo3,logo4,logo5,logo6]
    const bestProductBotItems=[best1,best2,best3,best4]
+    
    const dispatch = useDispatch();
    useEffect(() => {
    
@@ -50,6 +51,7 @@ export default function Home() {
   }, [dispatch]);
   return (
     <main>
+   
       <CarouselsTop/>
       <ShopCardItems/>
       <BestProductItems color={"bg-yellow-500"} images={imagesBestTop} furnitureImg={best}/>

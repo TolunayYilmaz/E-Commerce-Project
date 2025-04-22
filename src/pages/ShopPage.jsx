@@ -15,6 +15,7 @@ import {
 } from "../store/actions/productThunks.js";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 export default function ShopPage() {
   const { categoryId } = useParams();
@@ -22,21 +23,33 @@ export default function ShopPage() {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   const products = useSelector((state) => state.product.productList);
   const categories = useSelector((state) => state.product.categories);
-
+  let isLoading = useSelector((state) => state.client.loading);
   useEffect(() => {
-    dispatch(getCategories());//useParams ile categoryId çektim onun için rooute parametre girdim.
-   
-    categoryId >0 ? dispatch(getCategoryProducts(categoryId)): dispatch(getProducts()); 
-  }, [dispatch,categoryId]);
+    dispatch(getCategories()); //useParams ile categoryId çektim onun için rooute parametre girdim.
+
+    categoryId > 0
+      ? dispatch(getCategoryProducts(categoryId))
+      : dispatch(getProducts());
+  }, [dispatch, categoryId]);
 
   const top5Categories = categories
     .sort((a, b) => b.rating - a.rating) // rating değerine göre büyükten küçüğe sırala
     .slice(0, 5); // İlk 5 öğeyi al
   return (
     <main>
-      <ShopHead cards={top5Categories} />
-      <ShopMidProductsSection products={products} categoryId={categoryId} />
-      <LogoCompaniesSection logos={logos} />
+      {isLoading ? (
+        <div className="flex items-center justify-center">
+          {" "}
+          <CircularProgress size="150px" sx={{ color: "#23A6F0" }} />
+        </div>
+      ) : (
+        <>
+          {" "}
+          <ShopHead cards={top5Categories} />
+          <ShopMidProductsSection products={products} categoryId={categoryId} />
+          <LogoCompaniesSection logos={logos} />
+        </>
+      )}
     </main>
   );
 }

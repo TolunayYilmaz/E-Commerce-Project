@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import FooterButton from "../../Button/FooterButton";
 import { Grid2x2, ListChecks } from "lucide-react";
 import { useDispatch } from "react-redux";

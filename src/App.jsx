@@ -29,7 +29,7 @@ function App() {
    dispatch(verifyToken())
   },[dispatch])
 
-  let isLoading = useSelector((state) => state.client.loading);
+
   const ScrollToTop = () => {
     const location = useLocation();
 
@@ -39,12 +39,8 @@ function App() {
 
     return null;
   };
-  return isLoading ? (
-    <div className="flex items-center justify-center">
-      {" "}
-      <CircularProgress size="150px" sx={{ color: "#23A6F0" }} />
-    </div>
-  ) : (
+  return (
+ 
     <Router>
       <ScrollToTop />
       <Switch>
