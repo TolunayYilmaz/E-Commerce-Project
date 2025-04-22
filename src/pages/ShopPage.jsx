@@ -7,14 +7,27 @@ import logo3 from "../assets/logos/logo-3.png";
 import logo4 from "../assets/logos/logo-4.png";
 import logo5 from "../assets/logos/logo-5.png";
 import logo6 from "../assets/logos/logo-6.png";
-import {  useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getCategories,
+  getCategoryProducts,
+  getProducts,
+} from "../store/actions/productThunks.js";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function ShopPage() {
+  const { categoryId } = useParams();
+  const dispatch = useDispatch();
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   const products = useSelector((state) => state.product.productList);
- 
   const categories = useSelector((state) => state.product.categories);
+
+  useEffect(() => {
+    dispatch(getCategories());//useParams ile categoryId çektim onun için rooute parametre girdim.
+   
+    categoryId >0 ? dispatch(getCategoryProducts(categoryId)): dispatch(getProducts()); 
+  }, [dispatch,categoryId]);
 
   const top5Categories = categories
     .sort((a, b) => b.rating - a.rating) // rating değerine göre büyükten küçüğe sırala
@@ -22,7 +35,7 @@ export default function ShopPage() {
   return (
     <main>
       <ShopHead cards={top5Categories} />
-      <ShopMidProductsSection products={products} />
+      <ShopMidProductsSection products={products} categoryId={categoryId} />
       <LogoCompaniesSection logos={logos} />
     </main>
   );

@@ -3,11 +3,11 @@ import ShopPageMidCardItems from "../../CardList/shopMidList/ShopPageMidCardItem
 import ShopMidBot from "./ShopMidBot";
 import ShopMidHead from "./ShopMidHead";
 
-export default function ShopMidProductsSection(){
+export default function ShopMidProductsSection({products,categoryId}){
 
-const products = useSelector((state) => state.product.productList);
+
  return(<section className="py-10 flex  flex-col gap-5 mb-36">
-    <ShopMidHead/>
+    <ShopMidHead categoryId={categoryId}/>
     <ShopPageMidCardItems products={products}/>
     <ShopMidBot/>
     </section>);

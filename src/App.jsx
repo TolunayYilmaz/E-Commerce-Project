@@ -17,22 +17,19 @@ import AboutUsPage from "./pages/AboutUsPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { verifyToken } from "./store/actions/clientThunks.js";
+
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
-import { getCategories, getProducts } from "./store/actions/productThunks.js";
+
 import CircularProgress from "@mui/material/CircularProgress";
+import { verifyToken } from "./store/actions/clientThunks.js";
 
 function App() {
-  const dispatch = useDispatch();
+ const dispatch=useDispatch();
+  useEffect(()=> {
+   dispatch(verifyToken())
+  },[dispatch])
+
   let isLoading = useSelector((state) => state.client.loading);
-
-  useEffect(() => {
-    dispatch(verifyToken());
-    dispatch(getCategories());
-    dispatch(getProducts());
-    console.log("Loading ekran:" + isLoading);
-  }, [dispatch]);
-
   const ScrollToTop = () => {
     const location = useLocation();
 
@@ -53,6 +50,10 @@ function App() {
       <Switch>
         <Route exact path="/">
           <PageContent children={<Home />} />
+        </Route>
+      
+        <Route path="/shop/:gender/:categoryName/:categoryId">
+          <PageContent children={<ShopPage />} />
         </Route>
         <Route path="/shop">
           <PageContent children={<ShopPage />} />

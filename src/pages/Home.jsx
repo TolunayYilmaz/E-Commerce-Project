@@ -30,6 +30,9 @@ import best2 from "../assets/images/best2.jpg"
 import best3 from "../assets/images/best3.jpg"
 import best4 from "../assets/images/best4.jpg"
 import ShopCardItems from "../components/CardList/shopCardList/ShopCardItems.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategories} from "../store/actions/productThunks.js";
 
 
 
@@ -39,6 +42,12 @@ export default function Home() {
    const featureItems=[street,umbrella,car]
    const logos=[logo1,logo2,logo3,logo4,logo5,logo6]
    const bestProductBotItems=[best1,best2,best3,best4]
+   const dispatch = useDispatch();
+   useEffect(() => {
+   
+    dispatch(getCategories());
+  
+  }, [dispatch]);
   return (
     <main>
       <CarouselsTop/>

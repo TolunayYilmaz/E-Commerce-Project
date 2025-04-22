@@ -1,5 +1,5 @@
 import { setLoading } from "./clientAction";
-import { setCategories, setProductList, setTotal } from "./productAction";
+import { setCategories, setFilter, setProductList, setTotal } from "./productAction";
 import axios from "axios";
 
 export const getCategories = () => {
@@ -20,8 +20,8 @@ export const getCategories = () => {
 export const getProducts = () => {
   return async (dispatch) => {
     try {
-      console.log("çalıştı kategori")
-      dispatch(setLoading(true));
+      
+     
       const response = await axios.get(
         "https://e-commerce-m3d4.onrender.com/products"
       );
@@ -31,9 +31,46 @@ export const getProducts = () => {
     } catch (err) {
       console.log(err);
     }
-    finally{
-      dispatch(setLoading(false));
-    }
+
   };
 };
 
+export const getCategoryProducts=(categoryId)=>{
+
+  return async (dispatch) => {
+    try {
+      console.log("çalıştı kategoriden gelen product")
+    
+
+      const response = await axios.get(
+       ` https://e-commerce-m3d4.onrender.com/products?category=${categoryId}`
+      );
+      console.log(response.data.products);
+      dispatch(setProductList(response.data.products));
+      dispatch(setTotal(response.data.total));
+    } catch (err) {
+      console.log(err);
+    }
+  
+  };
+}
+
+export const getFilterProducts=(categoryId,filter)=>{
+
+  return async (dispatch) => {
+    try {
+      console.log("filtre:"+ filter)
+    
+     
+      const response = await axios.get(
+       ` https://e-commerce-m3d4.onrender.com/products?category=${categoryId}${filter}`
+      );
+      console.log(response.data.products);
+      dispatch(setProductList(response.data.products));
+      dispatch(setTotal(response.data.total));
+    } catch (err) {
+      console.log(err);
+    }
+  
+  };
+}
