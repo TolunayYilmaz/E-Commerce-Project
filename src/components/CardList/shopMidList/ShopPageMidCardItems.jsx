@@ -1,17 +1,19 @@
 import ShopMidPageCard from "../../Card/ShopMidPageCard";
 import { useHistoryHook } from "../../../hooks/useHistoryHook.jsx";
-export default function ShopPageMidCardItems({ images }) {
+
+export default function ShopPageMidCardItems({products}) {
   const goToPage = useHistoryHook();
+
   return (
     <div className="mx-auto">
-      <div className="hidden sm:pt-40 sm:grid  grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 sm:gap-y-36 md:w-full max-w-screen-xl sm:px-4">
-        {images.map((item, index) => (
-          <ShopMidPageCard key={index} image={item} goToPage={()=>goToPage("/productDetail/"+index)}/>
+      <div className="hidden sm:pt-40 sm:grid  grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 sm:gap-y-80 md:w-full max-w-screen-xl sm:px-4">
+        {products.slice(0, 12).map((item, index) => (
+          <ShopMidPageCard key={item.id} product={item} goToPage={()=>goToPage("/productDetail/"+index)}/>
         ))}
       </div>
       <div className="flex flex-col gap-3  items-center sm:hidden">
-        {images.slice(0, 4).map((item, index) => (
-          <ShopMidPageCard key={index} image={item} goToPage={()=>goToPage("/productDetail/"+index)}/>
+        {products.slice(0, 4).map((item, index) => (
+          <ShopMidPageCard key={item.id} product={item} goToPage={()=>goToPage("/productDetail/"+index)}/>
         ))}
       </div>
     </div>

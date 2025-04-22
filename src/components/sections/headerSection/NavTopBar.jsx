@@ -69,9 +69,17 @@ export default function NavTopBar() {
                     <h2 className="text-lg text-[#3C403D] ">Kadın</h2>
                     {categories.map((item) =>
                       item.id <= 8 ? (
-                        <a key={item.id} className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"  href={`/shop/kadin/${item.title.toLowerCase()}/${item.id}`}>
-                      
-                          {" "}
+                        <a
+                          key={item.id}
+                          onClick={() =>
+                            goToPage(
+                              `/shop/kadin/${item.title.toLowerCase()}/${
+                                item.id
+                              }`// link kullanınca sayfayı yeniliyor sayfayı hafızadan almalı 
+                            )
+                          }
+                          className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"
+                        >
                           {item.title}
                         </a>
                       ) : null
@@ -80,9 +88,18 @@ export default function NavTopBar() {
                   <div className="flex flex-col gap-1">
                     <h2 className="text-lg text-[#3C403D]">Erkek</h2>
                     {categories.map((item) =>
-                      item.id >8 ? (
-                        <a key={item.id} className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"  href={`/shop/erkek/${item.title.toLowerCase()}/${item.id}`}>
-                    
+                      item.id > 8 ? (
+                        <a
+                          key={item.id}
+                          onClick={() =>
+                            goToPage(
+                              `/shop/erkek/${item.title.toLowerCase()}/${
+                                item.id
+                              }`
+                            )
+                          }
+                          className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"
+                        >
                           {item.title}
                         </a>
                       ) : null

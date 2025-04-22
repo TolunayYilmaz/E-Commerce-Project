@@ -7,39 +7,22 @@ import logo3 from "../assets/logos/logo-3.png";
 import logo4 from "../assets/logos/logo-4.png";
 import logo5 from "../assets/logos/logo-5.png";
 import logo6 from "../assets/logos/logo-6.png";
+import {  useSelector } from "react-redux";
 
-import clothes from "../assets/images/clothes.jpg";
-import clothes2 from "../assets/images/clothes2.jpg";
-import clothes3 from "../assets/images/clothes3.jpg";
-import clothes4 from "../assets/images/clothes4.jpg";
-
-import { useSelector } from "react-redux";
 
 export default function ShopPage() {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
-  const imgs = [
-    clothes,
-    clothes2,
-    clothes3,
-    clothes4,
-    clothes,
-    clothes2,
-    clothes3,
-    clothes4,
-    clothes3,
-    clothes,
-    clothes3,
-    clothes2,
-  ];
+  const products = useSelector((state) => state.product.productList);
+ 
+  const categories = useSelector((state) => state.product.categories);
 
-const categories = useSelector((state) => state.product.categories);
-const top5Categories = categories
-  .sort((a, b) => b.rating - a.rating)  // rating değerine göre büyükten küçüğe sırala
-  .slice(0, 5);  // İlk 5 öğeyi al
+  const top5Categories = categories
+    .sort((a, b) => b.rating - a.rating) // rating değerine göre büyükten küçüğe sırala
+    .slice(0, 5); // İlk 5 öğeyi al
   return (
     <main>
-      <ShopHead cards={top5Categories}/>
-      <ShopMidProductsSection images={imgs} />
+      <ShopHead cards={top5Categories} />
+      <ShopMidProductsSection products={products} />
       <LogoCompaniesSection logos={logos} />
     </main>
   );
