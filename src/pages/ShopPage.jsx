@@ -29,7 +29,7 @@ export default function ShopPage() {
 
     categoryId > 0
       ? dispatch(getCategoryProducts(categoryId))
-      : dispatch(getProducts());
+      : dispatch(getProducts(""));
   }, [dispatch, categoryId]);
 
   const top5Categories = categories

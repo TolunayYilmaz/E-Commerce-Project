@@ -2,7 +2,7 @@ import {  useState } from "react";
 import FooterButton from "../../Button/FooterButton";
 import { Grid2x2, ListChecks } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { getFilterProducts } from "../../../store/actions/productThunks";
+import { getFilterProducts, getProducts } from "../../../store/actions/productThunks";
 import { setFilter } from "../../../store/actions/productAction";
 
 export default function ShopMidHead({ categoryId }) {
@@ -23,15 +23,23 @@ export default function ShopMidHead({ categoryId }) {
 
     const currentFilter = buildFilterString(selectedSort); // güncel filtre oluştur
     dispatch(setFilter(currentFilter));
-    dispatch(getFilterProducts(categoryId, currentFilter));
+    categoryId>0? dispatch(getFilterProducts(categoryId, currentFilter)):dispatch(getProducts(currentFilter));
+    console.log("Kategorii"+categoryId)
+   
+    
   };
 
   const handleFilterClick = () => {
     const currentFilter = buildFilterString();
     dispatch(setFilter(currentFilter));
-    dispatch(getFilterProducts(categoryId, currentFilter));
+    categoryId>0? dispatch(getFilterProducts(categoryId, currentFilter)):
+    dispatch(getProducts(currentFilter));
   };
 
+
+  function calis(){
+    console.log("bug")
+  }
   return (
     <div className="w-[252px] h-[168px] mx-auto flex flex-col justify-around gap-3 sm:flex-row sm:justify-between sm:w-[72.84%] sm:items-center sm:gap-0">
       <h6 className="flex justify-center text-[#737373] text-sm font-bold">

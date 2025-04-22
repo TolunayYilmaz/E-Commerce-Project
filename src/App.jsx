@@ -16,11 +16,11 @@ import TeamPage from "./pages/TeamPage.jsx";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
 
-import CircularProgress from "@mui/material/CircularProgress";
+
 import { verifyToken } from "./store/actions/clientThunks.js";
 
 function App() {
@@ -54,6 +54,7 @@ function App() {
         <Route path="/shop">
           <PageContent children={<ShopPage />} />
         </Route>
+     
         <PrivateRoute path="/productDetail">
           <PageContent children={<ProductDetailPage />} />
         </PrivateRoute>{" "}

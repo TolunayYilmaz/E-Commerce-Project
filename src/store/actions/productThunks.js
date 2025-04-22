@@ -21,13 +21,13 @@ export const getCategories = () => {
   };
 };
 
-export const getProducts = () => {
+export const getProducts = (filter) => {
   return async (dispatch) => {
     try {
      
       dispatch(setLoading(true));
       const response = await axios.get(
-        "https://e-commerce-m3d4.onrender.com/products"
+       ` https://e-commerce-m3d4.onrender.com/products/?${filter}`
       );
 
       console.log(response.data.products);
