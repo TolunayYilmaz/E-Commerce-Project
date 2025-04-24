@@ -9,14 +9,26 @@ export default function Pagination({ categoryId }) {
   const [selectedPage,setSelectedPage] =useState(offset / 25 + 1); 
   const filter = useSelector((state) => state.product.filter);
   const dispatch = useDispatch();
-
+  const totalPages = 20;
 
   useEffect(() => {
- 
-
-    setSelectedPage(offset / 25 + 1);
- 
-  }, [categoryId, filter,offset]);
+    const currentPage = offset / 25 + 1;
+    setSelectedPage(currentPage);
+  
+    // Sayfa pencere (que) içinde değilse güncelle
+    if (!que.includes(currentPage)) {
+      if (currentPage <= 2) {
+        // İlk sayfalar: 1-2-3 göster
+        setQue([1, 2, 3]);
+      } else if (currentPage >= totalPages - 1) {
+        // Son sayfalar: totalPages-2, totalPages-1, totalPages
+        setQue([totalPages - 2, totalPages - 1, totalPages]);
+      } else {
+        // Ortadaki sayfalar: currentPage merkezde
+        setQue([currentPage - 1, currentPage, currentPage + 1]);
+      }
+    }
+  }, [categoryId, filter, offset]);
 
   const updatePagination = (pageNumber) => {
     const newOffset = (pageNumber - 1) * 25;
