@@ -3,7 +3,7 @@ import FooterButton from "../../Button/FooterButton";
 import { Grid2x2, ListChecks } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { getFilterProducts, getProducts } from "../../../store/actions/productThunks";
-import { setFilter } from "../../../store/actions/productAction";
+import { setFilter,setOffset } from "../../../store/actions/productAction";
 
 export default function ShopMidHead({ categoryId }) {
   const dispatch = useDispatch();
@@ -16,30 +16,29 @@ export default function ShopMidHead({ categoryId }) {
   const buildFilterString = (sortValue = sort, inputValue = input) => {
     return `&filter=${inputValue}&sort=${sortValue}`;
   };
-
+  let category=categoryId>0?categoryId:1;
   const handleSortChange = (event) => {
     const selectedSort = event.target.value;
     setSort(selectedSort); // state'i güncelle
-
+    dispatch(setOffset(0));
     const currentFilter = buildFilterString(selectedSort); // güncel filtre oluştur
     dispatch(setFilter(currentFilter));
-    categoryId>0? dispatch(getFilterProducts(categoryId, currentFilter)):dispatch(getProducts(currentFilter));
-    console.log("Kategorii"+categoryId)
-   
+    dispatch(getFilterProducts(category, currentFilter));
+    console.log("Kategorii"+category)
+  
     
   };
 
   const handleFilterClick = () => {
     const currentFilter = buildFilterString();
     dispatch(setFilter(currentFilter));
-    categoryId>0? dispatch(getFilterProducts(categoryId, currentFilter)):
+    categoryId>0? dispatch(getFilterProducts(category, currentFilter)):
     dispatch(getProducts(currentFilter));
+    dispatch(setOffset(0));
   };
 
 
-  function calis(){
-    console.log("bug")
-  }
+
   return (
     <div className="w-[252px] h-[168px] mx-auto flex flex-col justify-around gap-3 sm:flex-row sm:justify-between sm:w-[72.84%] sm:items-center sm:gap-0">
       <h6 className="flex justify-center text-[#737373] text-sm font-bold">
@@ -64,10 +63,12 @@ export default function ShopMidHead({ categoryId }) {
             onChange={handleSortChange}
             value={sort}
           >
-            <option value="price:asc">Price: Low to High</option>
+             <option value="id:asc">Popularity</option>
+             <option value="price:asc">Price: Low to High</option>
             <option value="price:desc">Price: High to Low</option>
             <option value="rating:asc">Rating: Low to High</option>
             <option value="rating:desc">Rating: High to Low</option>
+         
           </select>
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
             <svg

@@ -22,6 +22,7 @@ export default function ShopPage() {
   const dispatch = useDispatch();
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
   const products = useSelector((state) => state.product.productList);
+  const filter = useSelector((state) => state.product.filter);
   const categories = useSelector((state) => state.product.categories);
   let isLoading = useSelector((state) => state.client.loading);
   useEffect(() => {
@@ -35,6 +36,8 @@ export default function ShopPage() {
   const top5Categories = categories
     .sort((a, b) => b.rating - a.rating) // rating değerine göre büyükten küçüğe sırala
     .slice(0, 5); // İlk 5 öğeyi al
+
+
   return (
     <main>
       {isLoading ? (
