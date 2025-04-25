@@ -1,13 +1,15 @@
 import { ChevronRight } from "lucide-react";
 
-export default function HeaderContentBlock({child,pageName}) {
+export default function HeaderContentBlock({child,pageName,categoryName,gender,categoryId}) {
+
+
   return (
     <section className="bg-[#FAFAFA] flex flex-col items-center  sm:bg-white">
       <header className=" h-[202px] w-full flex justify-around py-3 flex-col items-center sm:flex-row sm:justify-between sm:w-[72.84%]">
         <h3 className="font-bold">{pageName}</h3>
         <div className="flex gap-2">
-          <a href="" className="no-underline text-black text-sm font-bold">
-            Home
+          <a href={categoryName?`/shop/${gender}/${categoryName}/${categoryId}`:`/`} className="no-underline text-black text-sm font-bold">
+            {categoryName?"Shop":"Home"}
           </a>
           <ChevronRight
             size={30}

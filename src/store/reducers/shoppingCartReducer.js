@@ -4,7 +4,7 @@ import {
   SET_PAYMENT,
 } from "../actions/shoppingCartAction";
 const shoppingCartInitialState = {
-  catregories: [],
+  cart: [],
   payment: {},
   address: {},
 };
@@ -12,7 +12,7 @@ const shoppingCartInitialState = {
 const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
   switch (action.type) {
     case SET_CART:
-      return { ...state, catregories: action.payload };
+      return { ...state, cart: action.payload };
 
     case SET_ADDRESS:
       return { ...state, address: action.payload };

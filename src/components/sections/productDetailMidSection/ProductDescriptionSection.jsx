@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react";
 
-export default function ProductDescriptionSection() {
+export default function ProductDescriptionSection({product}) {
   return (
     <section className="flex flex-col gap-y-6 ">
       <div className="text-sm font-bold  flex justify-center gap-x-2 sm:gap-x-28">
@@ -17,7 +17,7 @@ export default function ProductDescriptionSection() {
       <div className="w-[90%] mx-auto h-px bg-[#BDBDBD]"></div>
       <div className="w-[80%] mx-auto flex flex-col  gap-y-16 sm:w-[90%] md:w-[85%] lg:w-[80%]  sm:flex-row sm:justify-around ">
         <img
-          src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+          src={product.images[0]?.url}
           alt="image 3"
           className="h-[292px] rounded-md w-full object-cover sm:h-[342px] sm:w-[282px] lg:h-[392px] lg:w-[332px]"
         />
@@ -25,9 +25,7 @@ export default function ProductDescriptionSection() {
           <div>
             <h3 className="font-bold text-2xl sm:mb-10">the quick fox jumps over </h3>
             <p className="text-sm text-[#737373] font-normal">
-              Met minim Mollie non desert Alamo est sit cliquey dolor do met
-              sent. RELIT official consequent door ENIM RELIT Mollie. Excitation
-              venial consequent sent nostrum met.
+              {product.description}
             </p>
             <p className="text-sm text-[#737373] font-normal">
               Met minim Mollie non desert Alamo est sit cliquey dolor do met

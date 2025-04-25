@@ -20,15 +20,13 @@ import { useDispatch } from "react-redux";
 
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
 
-
 import { verifyToken } from "./store/actions/clientThunks.js";
 
 function App() {
- const dispatch=useDispatch();
-  useEffect(()=> {
-   dispatch(verifyToken())
-  },[dispatch])
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(verifyToken());
+  }, [dispatch]);
 
   const ScrollToTop = () => {
     const location = useLocation();
@@ -40,24 +38,22 @@ function App() {
     return null;
   };
   return (
- 
     <Router>
       <ScrollToTop />
       <Switch>
         <Route exact path="/">
           <PageContent children={<Home />} />
         </Route>
-      
+        <PrivateRoute path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
+          <PageContent children={<ProductDetailPage />} />
+        </PrivateRoute>
         <Route path="/shop/:gender/:categoryName/:categoryId">
           <PageContent children={<ShopPage />} />
         </Route>
         <Route path="/shop">
           <PageContent children={<ShopPage />} />
         </Route>
-     
-        <PrivateRoute path="/productDetail">
-          <PageContent children={<ProductDetailPage />} />
-        </PrivateRoute>{" "}
+      
         {/* deneme token yoksa  logine yolla */}
         <Route path="/contact">
           <PageContent children={<ContactPage />} />

@@ -14,6 +14,8 @@ import best1 from "../assets/images/best1.png";
 import best2 from "../assets/images/best2.jpg";
 import best3 from "../assets/images/best3.jpg";
 import best4 from "../assets/images/best4.jpg";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function ProductDetailPage() {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
@@ -27,11 +29,14 @@ export default function ProductDetailPage() {
     best3,
     best4,
   ];
-
+  const productList=useSelector((state)=>state.product.productList)
+  const{gender,categoryName,categoryId,productId}=   useParams();
+  const product = productList.find((item) => item.id === Number(productId));
+  
   return (
     <main>
-      <ProductDetailSection />
-      <ProductDescriptionSection />
+      <ProductDetailSection product={product} categoryName={categoryName} gender={gender} categoryId={categoryId}/>
+      <ProductDescriptionSection product={product}/>
       
       <div className="sm:hidden">
         <BestProductBotItems
