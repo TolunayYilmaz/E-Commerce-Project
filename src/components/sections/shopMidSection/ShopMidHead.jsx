@@ -1,9 +1,12 @@
-import {  useState } from "react";
+import { useState } from "react";
 import FooterButton from "../../Button/FooterButton";
 import { Grid2x2, ListChecks } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { getFilterProducts, getProducts } from "../../../store/actions/productThunks";
-import { setFilter,setOffset } from "../../../store/actions/productAction";
+import {
+  getFilterProducts,
+  getProducts,
+} from "../../../store/actions/productThunks";
+import { setFilter, setOffset } from "../../../store/actions/productAction";
 
 export default function ShopMidHead({ categoryId }) {
   const dispatch = useDispatch();
@@ -16,7 +19,7 @@ export default function ShopMidHead({ categoryId }) {
   const buildFilterString = (sortValue = sort, inputValue = input) => {
     return `&filter=${inputValue}&sort=${sortValue}`;
   };
-  let category=categoryId>0?categoryId:1;
+  let category = categoryId > 0 ? categoryId : 1;
   const handleSortChange = (event) => {
     const selectedSort = event.target.value;
     setSort(selectedSort); // state'i güncelle
@@ -24,20 +27,17 @@ export default function ShopMidHead({ categoryId }) {
     const currentFilter = buildFilterString(selectedSort); // güncel filtre oluştur
     dispatch(setFilter(currentFilter));
     dispatch(getFilterProducts(category, currentFilter));
-    console.log("Kategorii"+category)
-  
-    
+    console.log("Kategorii" + category);
   };
 
   const handleFilterClick = () => {
     const currentFilter = buildFilterString();
     dispatch(setFilter(currentFilter));
-    categoryId>0? dispatch(getFilterProducts(category, currentFilter)):
-    dispatch(getProducts(currentFilter));
+    categoryId > 0
+      ? dispatch(getFilterProducts(category, currentFilter))
+      : dispatch(getProducts(currentFilter));
     dispatch(setOffset(0));
   };
-
-
 
   return (
     <div className="w-[252px] h-[168px] mx-auto flex flex-col justify-around gap-3 sm:flex-row sm:justify-between sm:w-[72.84%] sm:items-center sm:gap-0">
@@ -56,19 +56,17 @@ export default function ShopMidHead({ categoryId }) {
       </div>
 
       <div className="flex justify-between sm:w-[252px] sm:flex-row sm:gap-3">
-   
         <div className="relative">
           <select
             className="appearance-none bg-[#F9F9F9] border font-normal text-gray-700 py-3 px-7 rounded-[5px] leading-tight focus:outline-none focus:border-red-500"
             onChange={handleSortChange}
             value={sort}
           >
-             <option value="id:asc">Popularity</option>
-             <option value="price:asc">Price: Low to High</option>
+            <option value="id:asc">Popularity</option>
+            <option value="price:asc">Price: Low to High</option>
             <option value="price:desc">Price: High to Low</option>
             <option value="rating:asc">Rating: Low to High</option>
             <option value="rating:desc">Rating: High to Low</option>
-         
           </select>
           <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
             <svg
@@ -78,12 +76,15 @@ export default function ShopMidHead({ categoryId }) {
               strokeWidth="2"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </div>
         </div>
 
-      
         <div
           className="relative"
           onMouseEnter={() => setIsOpen(true)}
@@ -91,7 +92,7 @@ export default function ShopMidHead({ categoryId }) {
         >
           <FooterButton buttonName={"Filter"} onClick={handleFilterClick} />
           {isOpen && (
-            <div className="mt-2 px-3 py-3 w-[200%] bg-gray-300 rounded absolute top-[48px] right-0">
+            <div className="mt-2 px-3 py-3 w-[200%] z-10 bg-gray-300 rounded absolute top-[48px] right-0">
               <input
                 type="text"
                 className="w-full"

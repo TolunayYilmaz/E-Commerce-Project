@@ -7,17 +7,50 @@ import {
   ChevronDown,
 } from "lucide-react";
 import Button from "../../Button/Button.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistoryHook } from "../../../hooks/useHistoryHook.jsx";
 import Gravatar from "react-gravatar";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../../store/actions/clientThunks.js";
 
+import BasketSumCard from "../../CardList/basketCardList/BasketSumCard.jsx";
+
 export default function NavTopBar() {
   const goToPage = useHistoryHook();
   const [showDropdown, setShowDropdown] = useState(false);
   const [loginDropdown, setLoginDropdown] = useState(false);
+  const [basketDropDown, setBasketDropDown] = useState(false);
 
+  const shopDropdownRef = useRef(null);
+  const loginDropdownRef = useRef(null);
+  const basketDropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        shopDropdownRef.current &&
+        !shopDropdownRef.current.contains(event.target)
+      ) {
+        setShowDropdown(false);
+      }
+      if (
+        loginDropdownRef.current &&
+        !loginDropdownRef.current.contains(event.target)
+      ) {
+        setLoginDropdown(false);
+      }
+      if (
+        basketDropdownRef.current &&
+        !basketDropdownRef.current.contains(event.target)
+      ) {
+        setBasketDropDown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.client.user); //thunk ile çekildi redux** globalden çekti
   const categories = useSelector((state) => state.product.categories);
@@ -75,7 +108,7 @@ export default function NavTopBar() {
                             goToPage(
                               `/shop/kadin/${item.title.toLowerCase()}/${
                                 item.id
-                              }`// link kullanınca sayfayı yeniliyor sayfayı hafızadan almalı 
+                              }` // link kullanınca sayfayı yeniliyor sayfayı hafızadan almalı
                             )
                           }
                           className="text-sm no-underline  text-[#3C403D] font-bold hover:cursor-pointer hover:underline"
@@ -192,6 +225,8 @@ export default function NavTopBar() {
                             setLoginDropdown(false);
                             goToPage("/login");
                           }}
+                        
+                        
                         >
                           Login
                         </button>
@@ -201,6 +236,7 @@ export default function NavTopBar() {
                             setLoginDropdown(false);
                             goToPage("/signup");
                           }}
+                   
                         >
                           Sign Up
                         </button>
@@ -212,15 +248,22 @@ export default function NavTopBar() {
             )}
 
             <Search className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]" />
-            <div className="flex gap-2">
+            <div
+              className="flex relative gap-2 hover:cursor-pointer"
+              onClick={() => setBasketDropDown(true)}
+              ref={basketDropdownRef}
+            >
               <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]" />
               <p className="sm:text-[#23A6F0] hidden sm:block">1</p>
+              {basketDropDown && (
+              <BasketSumCard/>
+              )}
             </div>
             <AlignRight
               className="h-6 text-[#3C403D] mb-3 sm:mb-0 hover:text-[#23A6F0] sm:hidden hover:cursor-pointer hover:scale-105 transition-all duration-300"
               onClick={() => toggleVisible()}
             />
-            <div className="gap-2 hidden sm:flex">
+            <div className="gap-2 hidden relative sm:flex">
               <Heart className="h-6 text-[#3C403D] sm:text-[#23A6F0]" />
               <p className="sm:text-[#23A6F0]">1</p>
             </div>

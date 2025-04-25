@@ -1,6 +1,8 @@
 import { Star,Heart,ShoppingCart,Eye} from "lucide-react";
 import FooterButton from "../Button/FooterButton"
 import ProductCarousel from "../Carousel/ProductCarousel";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../store/actions/shoppingCartAction";
 
 export default function ProductDetailCard({product}) {
  
@@ -17,6 +19,13 @@ export default function ProductDetailCard({product}) {
     stars.push(
       <Star key={i + starCount} size={18} strokeWidth={1} color="#F3CD03" />
     );
+  }
+
+  const dispatch= useDispatch();
+  const cart=useSelector((state)=>state.cart.cart);
+  
+  function AddedProduct() {
+    dispatch(setCart(product));
   }
   return (
     <div className="flex flex-col w-full  justify-center items-center  sm:items-start sm:flex-row sm:justify-around sm:w-full lg:w-[85%] xl:w-[75%]">
@@ -61,7 +70,7 @@ export default function ProductDetailCard({product}) {
           <div className="w-[30px] h-[30px] rounded-full bg-[#252B42]"></div>
         </div>
         <div className=" flex items-center justify-start gap-3 my-4">
-          <FooterButton buttonName={"Sepete Ekle"} textSize={"text-sm"} />
+          <FooterButton buttonName={"Sepete Ekle"} textSize={"text-sm"}  onClick={()=>AddedProduct()}/>
           <div className="w-[30px] h-[30px] rounded-full bg-white border flex items-center justify-center">
           <Heart size={16} strokeWidth={1.5} />
           </div>
