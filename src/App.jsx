@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
 
 import { verifyToken } from "./store/actions/clientThunks.js";
+import BasketPage from "./pages/BasketPage.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,14 +45,19 @@ function App() {
         <Route exact path="/">
           <PageContent children={<Home />} />
         </Route>
+        {/* Koruma yapıyor hesap girili değilse logine yolluyor private route görev */}
         <PrivateRoute path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
           <PageContent children={<ProductDetailPage />} />
         </PrivateRoute>
+     
         <Route path="/shop/:gender/:categoryName/:categoryId">
           <PageContent children={<ShopPage />} />
         </Route>
         <Route path="/shop">
           <PageContent children={<ShopPage />} />
+        </Route>
+        <Route path="/basket">
+          <PageContent children={<BasketPage />} />
         </Route>
       
         {/* deneme token yoksa  logine yolla */}

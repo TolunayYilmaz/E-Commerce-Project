@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux"
 import ContactButton from "../../Button/ContactButton"
+import { useHistoryHook } from "../../../hooks/useHistoryHook"
 export default function BasketSumCard(){
 
+  const goToPage=useHistoryHook();
   const basketProducts=useSelector((state)=>state.cart.cart)
 
     return(  <div className=" absolute py-3 bg-white border shadow-md rounded-md w-[350px] h-auto z-[1] top-11 right-0 ">
@@ -40,6 +42,7 @@ export default function BasketSumCard(){
             borderColor={"border-gray-100"}
             bgColor={"bg-gray-200"}
             buttonName={"Sepete Git"}
+            push={()=>goToPage("/basket")}
           />
           <ContactButton
             textColor={"text-white"}
