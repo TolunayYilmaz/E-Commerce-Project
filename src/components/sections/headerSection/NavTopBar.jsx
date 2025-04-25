@@ -16,6 +16,8 @@ import { logout } from "../../../store/actions/clientThunks.js";
 import BasketSumCard from "../../CardList/basketCardList/BasketSumCard.jsx";
 
 export default function NavTopBar() {
+
+  const cart=useSelector((state)=>state.cart.cart)
   const goToPage = useHistoryHook();
   const [showDropdown, setShowDropdown] = useState(false);
   const [loginDropdown, setLoginDropdown] = useState(false);
@@ -254,7 +256,7 @@ export default function NavTopBar() {
               ref={basketDropdownRef}
             >
               <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]" />
-              <p className="sm:text-[#23A6F0] hidden sm:block">1</p>
+              <p className="sm:text-[#23A6F0] hidden sm:block">{cart?.length}</p>
               {basketDropDown && (
               <BasketSumCard/>
               )}
