@@ -22,7 +22,8 @@ export default function LoginForm() {
     if (error) {
       notify(error); // Hata varsa toastla göster
     } else if (Object.keys(user).length !== 0) {
-      history.goBack(); // Kullanıcı varsa yönlendir
+      history.goBack(); 
+   // Kullanıcı varsa yönlendir
     }
   }, [error, user]);
   

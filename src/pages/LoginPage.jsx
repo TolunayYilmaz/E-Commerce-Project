@@ -12,7 +12,7 @@ import logo6 from "../assets/logos/logo-6.png";
 import profile from "../assets/images/profile.jpg";
 import profile2 from "../assets/images/profile2.jpg";
 import profile3 from "../assets/images/profile3.jpg";
-import TeamMidSection from "../components/sections/teamMidSection/TeamMidSection";
+
 
 export default function LoginPage() {
   const cards = [
@@ -39,7 +39,7 @@ export default function LoginPage() {
   return (
     <main className="w-full flex  flex-col gap-y-5">
       <LoginTopSection />
-      <LoginMidSection />
+      <LoginMidSection/>
    
       <LogoCompaniesSection logos={logos} />
     </main>

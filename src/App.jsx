@@ -46,9 +46,9 @@ function App() {
           <PageContent children={<Home />} />
         </Route>
         {/* Koruma yapıyor hesap girili değilse logine yolluyor private route görev */}
-        <PrivateRoute path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
+        <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
           <PageContent children={<ProductDetailPage />} />
-        </PrivateRoute>
+        </Route>
      
         <Route path="/shop/:gender/:categoryName/:categoryId">
           <PageContent children={<ShopPage />} />
@@ -56,9 +56,9 @@ function App() {
         <Route path="/shop">
           <PageContent children={<ShopPage />} />
         </Route>
-        <Route path="/basket">
+        <PrivateRoute path="/basket">
           <PageContent children={<BasketPage />} />
-        </Route>
+        </PrivateRoute>
       
         {/* deneme token yoksa  logine yolla */}
         <Route path="/contact">

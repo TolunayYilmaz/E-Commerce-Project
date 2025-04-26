@@ -12,20 +12,40 @@ const shoppingCartInitialState = {
 const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
   switch (action.type) {
     case SET_CART:
-      const updatedCart = state.cart?.map((item) => {
-        if (item.product.id === action.payload.id) {
-          // Eğer ürün zaten sepette varsa, count değerini arttır
-          return { ...item, count: item.count + 1 };
+      let cargo=4.99;
+      const cargoFree=4.99;
+      let updatedCart = state.cart?.map((item) => {
+        if (item.product.id === action.payload.product.id) {
+          // Ürün varsa count'ı ve checked bilgisini güncelle
+          return { ...item, checked: action.payload.checked, count: item.count + action.payload.count };
         }
-        return item; // Diğer ürünleri olduğu gibi bırak
+        return item;
       });
     
-      // Eğer ürün sepette yoksa, yeni bir ürün ekle
-      if (!updatedCart.some(item => item.product.id === action.payload.id)) {
-        updatedCart.push({ count: 1, product: action.payload }); // action.payload'ı product olarak ekle
+      // Count'ı 0 veya daha az olan ürünleri sepetten çıkar
+      updatedCart = updatedCart.filter(item => item.count > 0);
+    
+      // Eğer ürün sepette yoksa yeni ürün ekle
+      const productExists = updatedCart.some(item => item.product.id === action.payload.product.id);
+    
+      if (!productExists && action.payload.count > 0) {
+        updatedCart.push({ checked: true, count: action.payload.count, product: action.payload.product });
       }
     
-      return { ...state, cart: updatedCart };
+      // !!! Burada toplam fiyatı hesaplıyoruz !!!
+      const totalAmount = updatedCart
+        .filter(item => item.checked) // sadece checked olanlar
+        .reduce((sum, item) => sum + item.product.price * item.count, 0);
+      totalAmount>=0?cargo:cargo=cargo-cargoFree;//ürün yoksa countu sıfırla
+      totalAmount>=159?cargo=cargo-cargoFree:cargo;
+      return {
+        ...state,
+        cart: updatedCart,
+        cargoAmount:cargo,
+        cargoFreeAmount:cargoFree,
+        totalAmount: totalAmount+cargo,
+      };
+    
     case SET_ADDRESS:
       return { ...state, address: action.payload };
 
