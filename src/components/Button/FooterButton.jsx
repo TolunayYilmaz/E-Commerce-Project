@@ -1,10 +1,14 @@
+import { motion } from "motion/react";
 export default function FooterButton({ buttonName, textSize, onClick }) {
   return (
-    <button
-      className={`px-6 py-3 bg-[#23A6F0] font-bold text-white rounded-[5px] ${textSize} hover:bg-[#3695cc] hover:shadow-md transition-transform duration-300 hover:scale-[103%]`}
+    <motion.button
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.95 }}
+      onHoverStart={() => console.log("hover started!")}
+      className={`px-6 py-3 bg-[#23A6F0] font-bold text-white rounded-[5px] ${textSize} `}
       onClick={onClick}
     >
       {buttonName}
-    </button>
+    </motion.button>
   );
 }

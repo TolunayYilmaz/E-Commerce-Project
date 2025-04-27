@@ -12,7 +12,7 @@ export default function BasketSection() {
 
 
   return (
-    <section className="w-full sm:w-[75%] sm:mx-auto bg-[#f0efef] min-h-[400px] py-3 flex flex-col  rounded-md">
+    <section className="w-full sm:w-[75%] sm:mx-auto min-h-[400px] py-3 flex flex-col  rounded-md bg-[#FAFAFA] mb-10">
       <h4 className="ml-20 ">Sepetim ({basket?.length})</h4>
       <div className="flex w-full   flex-col gap-2  lg:flex-row lg:justify-around">
         <div className="flex flex-col gap-3  ">

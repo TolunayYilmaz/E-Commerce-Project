@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { setRoles,setUser,setError } from "./clientAction.js"
+import { setRoles,setUser,setError, setAddressList } from "./clientAction.js"
+
 
 
 // Thunk: sadece roles boşsa API'den çek
@@ -77,5 +78,27 @@ export const logout = () => {
     dispatch(setUser({}));
     localStorage.removeItem("token");
     delete axios.defaults.headers.common["Authorization"];
+  };
+};
+
+
+
+export const getAddressList = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.get(
+        "https://workintech-fe-ecommerce.onrender.com/user/address"
+      );
+      
+      dispatch(setAddressList(response.data));
+      console.log("çalıştı adrres"+ response.data)
+    } catch (err) {
+     console.log("Adres listesi gelemedi.")
+    }
   };
 };

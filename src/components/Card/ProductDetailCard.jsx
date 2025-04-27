@@ -9,7 +9,14 @@ export default function ProductDetailCard({ product }) {
   const stars = [];
   const starCount = Math.round(product.rating);
   const count = 1;
-  const notify = () => toast("Add to basket!");
+  const notify = () => toast.success('Add to basket!', {
+    autoClose: 1000, // 1.5 saniyede kapanır
+    position: "top-right", // toast'ın konumu (isteğe bağlı)
+    hideProgressBar: false, // ilerleme çubuğunu göster
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
   for (let i = 0; i < starCount; i++) {
     stars.push(
       <Star key={i} strokeWidth={1} size={18} fill="#F3CD03" color="#F3CD03" />
