@@ -25,7 +25,7 @@ export default function BasketSumCard(){
                  </span>
                </p>
                <p className="text-sm m-0 text-[#6d6e6d]">Adet: {item.count}</p>
-               <h6 className="m-0 text-[#23A6F0]">${item.product.price*item.count}</h6>
+               <h6 className="m-0 text-[#23A6F0]">${(item.product.price*item.count).toFixed(2)}</h6>
              </div>
            </div>
  

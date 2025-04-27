@@ -36,8 +36,7 @@ const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
       const totalAmount = updatedCart
         .filter(item => item.checked) // sadece checked olanlar
         .reduce((sum, item) => sum + item.product.price * item.count, 0);
-      totalAmount>=0?cargo:cargo=cargo-cargoFree;//ürün yoksa countu sıfırla
-      totalAmount>=159?cargo=cargo-cargoFree:cargo;
+        cargo = totalAmount === 0 ? 0 : totalAmount >= 159 ? cargo - cargoFree : 4.99;
       return {
         ...state,
         cart: updatedCart,

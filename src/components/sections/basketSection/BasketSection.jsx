@@ -1,12 +1,15 @@
 import { Plus, Minus, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../store/actions/shoppingCartAction";
-import ContactButton from "../../Button/ContactButton";
+import OrderSummarySection from "../orderSummarySection/OrderSummarySection";
+
+
 
 export default function BasketSection() {
   const basket = useSelector((state) => state.cart.cart);
-  const summary = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
+
 
   return (
     <section className="w-full sm:w-[75%] sm:mx-auto bg-[#f0efef] min-h-[400px] py-3 flex flex-col  rounded-md">
@@ -103,52 +106,7 @@ export default function BasketSection() {
             </div>
           ))}
         </div>
-        {basket?.length > 0 && (
-          <div className="bg-white border rounded-md shadow-md h-auto lg:w-[200px] 2xl:w-[250px]">
-            <div className="m-2 flex flex-col gap-2">
-              <h4 className="text-base m-0">Order Summary</h4>
-              <p className="text-sm m-0 flex justify-between">
-                Total Orders
-                <span>
-                  ${(summary?.totalAmount - summary?.cargoAmount).toFixed(2)}
-                </span>{" "}
-              </p>
-              <p className="text-sm m-0 flex justify-between">
-                Total Shipments{" "}
-                <span>
-                  $
-                  {summary?.cargoAmount.toFixed(2) > 0
-                    ? summary?.cargoAmount.toFixed(2)
-                    : summary?.cargoFreeAmount.toFixed(2)}
-                </span>
-              </p>
-              {summary?.cargoAmount === 0 && (
-                <p className="text-sm m-0 flex justify-between">
-                  Shipping Discount{" "}
-                  <span>-${summary?.cargoFreeAmount.toFixed(2)}</span>
-                </p>
-              )}
-              <div className="w-full h-[1px] bg-gray-200"></div>
-
-              <p className="text-sm m-0 flex justify-between">
-                Grand Total <span>${summary?.totalAmount.toFixed(2)}</span>
-              </p>
-              <div className="w-full h-[1px] bg-gray-200"></div>
-              <div className="lg:w-full w-[50%] mx-auto flex flex-col gap-1">
-                <button className="bg-white border-[#23A6F0] border-[1px] rounded-md text-[#737373] w-full font-bold py-1 text-sm">
-                + Coupon
-                </button>
-                <ContactButton
-                  bgColor={"bg-[#23A6F0]"}
-                  px={"w-full"}
-                  py={"py-1"}
-                  textColor={"text-white"}
-                  buttonName={"Buy"}
-                />
-              </div>
-            </div>
-          </div>
-        )}
+       <OrderSummarySection/>
       </div>
     </section>
   );

@@ -3,12 +3,13 @@ import FooterButton from "../Button/FooterButton";
 import ProductCarousel from "../Carousel/ProductCarousel";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../store/actions/shoppingCartAction";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function ProductDetailCard({ product }) {
   const stars = [];
   const starCount = Math.round(product.rating);
   const count = 1;
-
+  const notify = () => toast("Add to basket!");
   for (let i = 0; i < starCount; i++) {
     stars.push(
       <Star key={i} strokeWidth={1} size={18} fill="#F3CD03" color="#F3CD03" />
@@ -74,7 +75,10 @@ export default function ProductDetailCard({ product }) {
           <FooterButton
             buttonName={"Sepete Ekle"}
             textSize={"text-sm"}
-            onClick={() => AddedProduct()}
+            onClick={() => {
+              AddedProduct()
+              notify()
+            }}
           />
           <div className="w-[30px] h-[30px] rounded-full bg-white border flex items-center justify-center">
             <Heart size={16} strokeWidth={1.5} />
@@ -87,6 +91,7 @@ export default function ProductDetailCard({ product }) {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 }

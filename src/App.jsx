@@ -22,6 +22,7 @@ import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
 
 import { verifyToken } from "./store/actions/clientThunks.js";
 import BasketPage from "./pages/BasketPage.jsx";
+import AddressPage from "./pages/AddressPage.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,17 +50,20 @@ function App() {
         <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId">
           <PageContent children={<ProductDetailPage />} />
         </Route>
-     
+
         <Route path="/shop/:gender/:categoryName/:categoryId">
           <PageContent children={<ShopPage />} />
         </Route>
         <Route path="/shop">
           <PageContent children={<ShopPage />} />
         </Route>
+        <PrivateRoute path="/basket/address">
+          <PageContent children={<AddressPage />} />
+        </PrivateRoute>
         <PrivateRoute path="/basket">
           <PageContent children={<BasketPage />} />
         </PrivateRoute>
-      
+
         {/* deneme token yoksa  logine yolla */}
         <Route path="/contact">
           <PageContent children={<ContactPage />} />
