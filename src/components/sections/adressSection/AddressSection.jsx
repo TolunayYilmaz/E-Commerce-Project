@@ -188,7 +188,7 @@ export default function AddressSection() {
             </div>
 
             <div className="bg-white w-full flex h-auto rounded-md flex-col gap-3 ">
-              <div className="w-full  flex justify-between">
+              <div className="w-full  flex justify-between py-1">
                 <h6 className="text-[rgb(35,166,240)] font-bold ml-2 mt-2">
                   Teslimat Adresi
                 </h6>
@@ -203,15 +203,15 @@ export default function AddressSection() {
                   </h6>
                 </div>
               </div>
-              <div className="w-full flex flex-wrap flex-col sm:flex-row  ">
+              <div className="w-full flex flex-wrap flex-col sm:flex-row pb-2 ">
                 <div
-                  className={`h-auto  ${
+                  className={`h-auto  gap-2 ${
                     fatura ? "sm:w-full" : "sm:w-[50%]"
-                  } flex flex-col sm:flex-row flex-wrap justify-around items-center sm:items-start`}
+                  } flex flex-col sm:flex-row flex-wrap justify-between  items-center sm:items-start`}
                 >
                   <div
                     onClick={() => openModal("Add")}
-                    className={`${
+                    className={` w-[92%] ${
                       fatura ? "sm:w-[46%]" : "w-[92%]"
                     } min-h-[100px] h-[100px] mt-[20px] flex flex-col justify-center items-center bg-gray-200 rounded-md hover:cursor-pointer transition-transform transform hover:scale-[103%] active:scale-[103%]`}
                   >
@@ -221,8 +221,8 @@ export default function AddressSection() {
                   {addressList?.map((item, index) => (
                     <div
                       key={index}
-                      className={` ${
-                        !fatura ? "w-[92%]" : "w-[46%]"
+                      className={`w-[92%] ${
+                        !fatura ? "w-[92%]" : "sm:w-[46%]"
                       } h-auto flex flex-col gap-y-1`}
                     >
                       <div className="flex justify-between text-xs font-medium">
