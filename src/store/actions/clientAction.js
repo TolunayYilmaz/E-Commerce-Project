@@ -8,6 +8,12 @@ export const SET_LOADING = 'SET_LOADING';
 export const SET_ERROR = 'SET_ERROR';
 export const SET_ADDRESS_LIST = 'SET_ADDRESS_LIST';
 export const SET_CREDIT_CARDS = 'SET_CREDIT_CARDS';
+export const UPDATE_ADDRESS_LIST="UPDATE_ADDRESS_LIST";
+export const DELETE_ADDRESS_LIST="DELETE_ADDRESS_LIST";
+export const SET_RECEIPT_ADDRESS_LIST="SET_RECEIPT_ADDRESS_LIST";
+export const UPDATE_RECEIPT_ADDRESS_LIST="UPDATE_RECEIPT_ADDRESS_LIST";
+export const DELETE_RECEIPT_ADDRESS_LIST="DELETE_RECEIPT_ADDRESS_LIST";
+
 
 export const setUser = (user) => ({
     type: SET_USER,
@@ -43,8 +49,37 @@ export const setUser = (user) => ({
     type: SET_ADDRESS_LIST,
     payload: addressList,
   });
+  export const updateAddressList = (address) => ({
+    type: UPDATE_ADDRESS_LIST,
+    payload: address,
+  });
+  export const deleteAddressList = (id) => ({
+    type: DELETE_ADDRESS_LIST,
+    payload: id,
+  });
   
   export const setCreditCards = (creditCards) => ({
     type: SET_CREDIT_CARDS,
     payload: creditCards,
   });
+
+
+export const setReceiptAddressList = (addresses) => ({
+  type: SET_RECEIPT_ADDRESS_LIST,
+  payload: addresses,
+});
+
+export const addReceiptAddress = (address) => ({
+  type: SET_RECEIPT_ADDRESS_LIST,
+  payload: address,
+});
+
+export const updateReceiptAddress = (address) => ({
+  type: UPDATE_RECEIPT_ADDRESS_LIST,
+  payload: address,
+});
+
+export const deleteReceiptAddress = (addressId) => ({
+  type: DELETE_RECEIPT_ADDRESS_LIST,
+  payload: addressId,
+});

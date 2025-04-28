@@ -12,9 +12,9 @@ export default function BasketSection() {
 
 
   return (
-    <section className="w-full sm:w-[75%] sm:mx-auto min-h-[400px] py-3 flex flex-col  rounded-md bg-[#FAFAFA] mb-10">
+    <section className="w-full sm:w-[80%] sm:mx-auto min-h-[400px] py-3 flex flex-col px-4  rounded-md bg-[#FAFAFA] mb-10">
       <h4 className="ml-20 ">Sepetim ({basket?.length})</h4>
-      <div className="flex w-full   flex-col gap-2  lg:flex-row lg:justify-around">
+      <div className="flex w-full   flex-col gap-2  lg:flex-row lg:justify-between">
         <div className="flex flex-col gap-3  ">
           {basket?.map((item) => (
             <div

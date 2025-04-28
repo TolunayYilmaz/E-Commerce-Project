@@ -10,10 +10,11 @@ import HeaderContentBlock from "../components/sections/headerSection/HeaderConte
 export default function AddressPage() {
   const bestProductBotItems = [best1, best2, best3, best4];
   return (
-    <main>
+    <main className="relative">
       <HeaderContentBlock pageName={"Address"} />
       <AddressSection />
       <BestProductBotItems color={"bg-blue-100"} images={bestProductBotItems} />
+
     </main>
   );
 }

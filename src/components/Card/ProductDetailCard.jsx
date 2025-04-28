@@ -10,12 +10,12 @@ export default function ProductDetailCard({ product }) {
   const starCount = Math.round(product.rating);
   const count = 1;
   const notify = () => toast.success('Add to basket!', {
-    autoClose: 1000, // 1.5 saniyede kapanır
+    autoClose: 350, // 1.5 saniyede kapanır
     position: "top-right", // toast'ın konumu (isteğe bağlı)
     hideProgressBar: false, // ilerleme çubuğunu göster
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
   });
   for (let i = 0; i < starCount; i++) {
     stars.push(

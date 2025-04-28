@@ -1,7 +1,13 @@
-import axios from 'axios';
-import { setRoles,setUser,setError, setAddressList } from "./clientAction.js"
-
-
+import axios from "axios";
+import {
+  setRoles,
+  setUser,
+  setError,
+  setAddressList,
+  updateAddressList,
+  deleteAddressList,
+  setReceiptAddressList,
+} from "./clientAction.js";
 
 // Thunk: sadece roles boşsa API'den çek
 export const fetchRolesIfNeeded = () => {
@@ -15,17 +21,15 @@ export const fetchRolesIfNeeded = () => {
     }
 
     try {
-      const response = await axios.get("https://workintech-fe-ecommerce.onrender.com/roles");
+      const response = await axios.get(
+        "https://workintech-fe-ecommerce.onrender.com/roles"
+      );
       dispatch(setRoles(response.data));
     } catch (err) {
       console.error("Rol verileri alınamadı:", err);
     }
   };
 };
-
-
-
-
 
 export const userLogin = (loginData, rememberMe) => {
   return async (dispatch) => {
@@ -81,8 +85,6 @@ export const logout = () => {
   };
 };
 
-
-
 export const getAddressList = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
@@ -94,11 +96,73 @@ export const getAddressList = () => {
       const response = await axios.get(
         "https://workintech-fe-ecommerce.onrender.com/user/address"
       );
-      
+
       dispatch(setAddressList(response.data));
-      console.log("çalıştı adrres"+ response.data)
+ 
+      console.log("çalıştı adrres" + response.data);
     } catch (err) {
-     console.log("Adres listesi gelemedi.")
+      console.log("Adres listesi gelemedi.");
+    }
+  };
+};
+
+export const addAddress = (data) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.post(
+        "https://workintech-fe-ecommerce.onrender.com/user/address",
+        data
+      );
+
+      dispatch(setAddressList(data));
+    } catch (err) {
+      console.log("Adres listesi eklenmedi.", err);
+    }
+  };
+};
+
+export const updateAddress = (data) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.put(
+        "https://workintech-fe-ecommerce.onrender.com/user/address",
+        data
+      );
+
+      dispatch(updateAddressList(data));
+    } catch (err) {
+      console.log("listegüncel değil", err);
+    }
+  };
+};
+export const deleteAddress = (id) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.delete(
+        `https://workintech-fe-ecommerce.onrender.com/user/address/${id}`
+      );
+
+      dispatch(deleteAddressList(id));
+    } catch (err) {
+      console.log("listegüncel değil", err);
     }
   };
 };
