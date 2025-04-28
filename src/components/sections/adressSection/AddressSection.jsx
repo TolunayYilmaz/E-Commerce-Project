@@ -19,7 +19,9 @@ export default function AddressSection() {
   const [fatura, setFatura] = useState(true); // Fatura adresi kontrolü
 
   const addressList = useSelector((state) => state.client.addressList);
-  const receiptAddressList = useSelector((state) => state.client.receiptAddresses);
+  const receiptAddressList = useSelector(
+    (state) => state.client.receiptAddresses
+  );
   const basket = useSelector((state) => state.cart.cart);
   const address = useSelector((state) => state.cart.address);
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -81,62 +83,7 @@ export default function AddressSection() {
   return (
     <section className="w-full sm:w-[80%] sm:mx-auto min-h-[400px] py-3 flex flex-col px-4  rounded-md bg-[#FAFAFA] mb-10">
       <h4 className="ml-20 ">Sepetim ({basket?.length})</h4>
-      <div className="flex w-full flex-col gap-2 lg:flex-row lg:justify-between">
-        <div className="flex flex-col gap-3">
-          <div className="flex flex-col gap-3 w-full lg:w-[820px]">
-            <div className="bg-white w-full flex flex-col sm:flex-row rounded-md">
-              <div className="border rounded-t-md p-2 flex-1 sm:rounded-l-md hover:bg-gray-100 hover:cursor-pointer">
-                <h5 className="m-0 text-[#23A6F0] font-bold text-sm sm:text-xl">
-                  Address
-                </h5>
-                <p className="m-0 text-sm font-medium">{address?.title}</p>
-                <p className="m-0 text-sm">
-                  {address?.name} {address?.surname}
-                </p>
-                <p className="m-0 text-sm">
-                  {address?.city} / {address?.district} /{" "}
-                  {address?.neighborhood} / {address?.address}
-                </p>
-              </div>
-
-              <div className="border rounded-b-md p-2 flex-1 sm:rounded-r-md hover:bg-gray-100 hover:cursor-pointer">
-                <h5 className="m-0 text-[#23A6F0] font-bold text-lg sm:text-xl">
-                  Payment Options
-                </h5>
-                <p className="m-0 text-sm font-medium">Card</p>
-                <p className="m-0 text-sm">
-                  Protected Routing subject on React Router 5 tutorials and docs
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white w-full flex h-auto rounded-md flex-col gap-3">
-              <div className="w-full flex justify-between">
-                <h6 className="text-[rgb(35,166,240)] font-bold ml-2 mt-2">
-                  Teslimat Adresi
-                </h6>
-                <div className="flex">
-                  <input
-                    type="checkbox"
-                    checked={fatura}
-                    onClick={() => setFatura(!fatura)} // Fatura adresi checkbox'ı
-                  />
-                  <h6 className="text-[rgb(35,166,240)] font-bold ml-2 mt-2 ">
-                    Fatura Adresi
-                  </h6>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between mx-2 gap-y-6 relative">
-                <div
-                  onClick={() => openModal("Add")}
-                  className="sm:w-[46%] min-h-[100px] h-[100px] mt-[20px] flex flex-col justify-center items-center bg-gray-200 rounded-md hover:cursor-pointer transition-transform transform hover:scale-[103%] active:scale-[103%]"
-                >
-                  <Plus color="#23a6f0" strokeWidth={3} />
-                  <p className="text-sm font-medium">Add Address</p>
-                </div>
-
-                {isModalOpen && (
+      {isModalOpen && (
                   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                     <div className="bg-white p-6 rounded-md w-[90%] sm:w-[400px] relative">
                       <button
@@ -211,125 +158,204 @@ export default function AddressSection() {
                   </div>
                 )}
 
-                {/* Teslimat Adresi */}
-                {addressList?.map((item, index) => (
-                  <div
-                    key={index}
-                    className="sm:w-[46%] h-auto flex flex-col gap-y-1"
-                  >
-                    <div className="flex justify-between text-xs font-medium">
-                      <div className="flex gap-1">
-                        <input
-                          type="radio"
-                          name="example"
-                          value="option1"
-                          className="hover:cursor-pointer"
-                          defaultChecked={index === 0}
-                          onClick={() => dispatch(setAddress(item))}
-                        />
-                        <p className="m-0">{item.title}</p>
-                      </div>
-
-                      <div className="flex">
-                        <Trash2
-                          className="text-red-400 sm:ml-2 hover:cursor-pointer hover:text-red-600"
-                          size={16}
-                          onClick={() => onDelete(item.id)}
-                        />
-                        <a
-                          className="text-black hover:cursor-pointer"
-                          onClick={() => openModal("Update", index)}
-                        >
-                          Düzenle
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex-col min-h-[100px] bg-gray-200 rounded-md">
-                      <div className="flex w-full items-center justify-between">
-                        <h6 className="ml-2 mt-2 text-[#23A6F0] font-bold text-xs flex gap-x-1">
-                          <UserRound
-                            size={16}
-                            color="#23A6F0"
-                            strokeWidth={2.5}
-                          />
-                          {item.name} {item.surname}
-                        </h6>
-                        <h6 className="my-0 mr-2 flex gap-x-1 text-xs font-medium items-center">
-                          <Smartphone size={16} strokeWidth={2.5} />{" "}
-                          {item.phone}
-                        </h6>
-                      </div>
-                      <p className="ml-2 text-xs">
-                        {item.city} / {item.district} / {item.neighborhood} /{" "}
-                        {item.address}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-
-             
+      <div className="flex w-full flex-col gap-2 lg:flex-row lg:justify-between">
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 w-full lg:w-[820px]">
+            <div className="bg-white w-full flex flex-col sm:flex-row rounded-md">
+              <div className="border rounded-t-md p-2 flex-1 sm:rounded-l-md hover:bg-gray-100 hover:cursor-pointer">
+                <h5 className="m-0 text-[#23A6F0] font-bold text-sm sm:text-xl">
+                  Address
+                </h5>
+                <p className="m-0 text-sm font-medium">{address?.title}</p>
+                <p className="m-0 text-sm">
+                  {address?.name} {address?.surname}
+                </p>
+                <p className="m-0 text-sm">
+                  {address?.city} / {address?.district} /{" "}
+                  {address?.neighborhood} / {address?.address}
+                </p>
               </div>
-              <div className="ml-2">
-                   {/* Fatura Adresi */}
-                   {!fatura && receiptAddressList?.map((item, index) => (
+
+              <div className="border rounded-b-md p-2 flex-1 sm:rounded-r-md hover:bg-gray-100 hover:cursor-pointer">
+                <h5 className="m-0 text-[#23A6F0] font-bold text-lg sm:text-xl">
+                  Payment Options
+                </h5>
+                <p className="m-0 text-sm font-medium">Card</p>
+                <p className="m-0 text-sm">
+                  Protected Routing subject on React Router 5 tutorials and docs
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white w-full flex h-auto rounded-md flex-col gap-3 ">
+              <div className="w-full  flex justify-between">
+                <h6 className="text-[rgb(35,166,240)] font-bold ml-2 mt-2">
+                  Teslimat Adresi
+                </h6>
+                <div className="flex">
+                  <input
+                    type="checkbox"
+                    checked={fatura}
+                    onClick={() => setFatura(!fatura)} // Fatura adresi checkbox'ı
+                  />
+                  <h6 className="text-[rgb(35,166,240)] font-bold ml-2 mt-2 ">
+                    Fatura Adresi
+                  </h6>
+                </div>
+              </div>
+              <div className="w-full flex flex-wrap flex-col sm:flex-row  ">
+                <div
+                  className={`h-auto  ${
+                    fatura ? "sm:w-full" : "sm:w-[50%]"
+                  } flex flex-col sm:flex-row flex-wrap justify-around items-center sm:items-start`}
+                >
                   <div
-                    key={index}
-                    className="sm:w-[46%] h-auto flex flex-col gap-y-1"
+                    onClick={() => openModal("Add")}
+                    className={`${
+                      fatura ? "sm:w-[46%]" : "w-[92%]"
+                    } min-h-[100px] h-[100px] mt-[20px] flex flex-col justify-center items-center bg-gray-200 rounded-md hover:cursor-pointer transition-transform transform hover:scale-[103%] active:scale-[103%]`}
                   >
-                    <div className="flex justify-between text-xs font-medium">
-                      <div className="flex gap-1">
-                        <input
-                          type="radio"
-                          name="example"
-                          value="option1"
-                          className="hover:cursor-pointer"
-                          checked={item}
-                        />
-                        <p className="m-0">{item.title}</p>
-                      </div>
-
-                      <div className="flex">
-                        <Trash2
-                          className="text-red-400 sm:ml-2 hover:cursor-pointer hover:text-red-600"
-                          size={16}
-                          onClick={() => onDelete(item.id)}
-                        />
-                        <a
-                          className="text-black hover:cursor-pointer"
-                          onClick={() => openModal("Update", index)}
-                        >
-                          Düzenle
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex-col min-h-[100px] bg-gray-200 rounded-md">
-                      <div className="flex w-full items-center justify-between">
-                        <h6 className="ml-2 mt-2 text-[#23A6F0] font-bold text-xs flex gap-x-1">
-                          <UserRound
-                            size={16}
-                            color="#23A6F0"
-                            strokeWidth={2.5}
-                          />
-                          {item.name} {item.surname}
-                        </h6>
-                        <h6 className="my-0 mr-2 flex gap-x-1 text-xs font-medium items-center">
-                          <Smartphone size={16} strokeWidth={2.5} />{" "}
-                          {item.phone}
-                        </h6>
-                      </div>
-                      <p className="ml-2 text-xs">
-                        {item.city} / {item.district} / {item.neighborhood} /{" "}
-                        {item.address}
-                      </p>
-                    </div>
+                    <Plus color="#23a6f0" strokeWidth={3} />
+                    <p className="text-sm font-medium">Add Address</p>
                   </div>
-                ))}
+                  {addressList?.map((item, index) => (
+                    <div
+                      key={index}
+                      className={` ${
+                        !fatura ? "w-[92%]" : "w-[46%]"
+                      } h-auto flex flex-col gap-y-1`}
+                    >
+                      <div className="flex justify-between text-xs font-medium">
+                        <div className="flex gap-1">
+                          <input
+                            type="radio"
+                            name="example"
+                            value="option1"
+                            className="hover:cursor-pointer"
+                            defaultChecked={index === 0}
+                            onClick={() => dispatch(setAddress(item))}
+                          />
+                          <p className="m-0">{item.title}</p>
+                        </div>
+
+                        <div className="flex">
+                          <Trash2
+                            className="text-red-400 sm:ml-2 hover:cursor-pointer hover:text-red-600"
+                            size={16}
+                            onClick={() => onDelete(item.id)}
+                          />
+                          <a
+                            className="text-black hover:cursor-pointer"
+                            onClick={() => openModal("Update", index)}
+                          >
+                            Düzenle
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="flex-col min-h-[100px] bg-gray-200 rounded-md">
+                        <div className="flex w-full items-center justify-between">
+                          <h6 className="ml-2 mt-2 text-[#23A6F0] font-bold text-xs flex gap-x-1">
+                            <UserRound
+                              size={16}
+                              color="#23A6F0"
+                              strokeWidth={2.5}
+                            />
+                            {item.name} {item.surname}
+                          </h6>
+                          <h6 className="my-0 mr-2 flex gap-x-1 text-xs font-medium items-center">
+                            <Smartphone size={16} strokeWidth={2.5} />{" "}
+                            {item.phone}
+                          </h6>
+                        </div>
+                        <p className="ml-2 text-xs">
+                          {item.city} / {item.district} / {item.neighborhood} /{" "}
+                          {item.address}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {!fatura && (
+                  <div
+                  className={`h-auto  ${
+                    fatura ? "sm:w-full" : "sm:w-[50%]"
+                  } flex flex-col sm:flex-row flex-wrap justify-around items-center sm:items-start`}
+                  >
+                    <div
+                      onClick={() => openModal("Add")}
+                      className={`${
+                        fatura ? "sm:w-[46%]" : "w-[92%]"
+                      } min-h-[100px] h-[100px] mt-[20px] flex flex-col justify-center items-center bg-gray-200 rounded-md hover:cursor-pointer transition-transform transform hover:scale-[103%] active:scale-[103%]`}
+                    >
+                      <Plus color="#23a6f0" strokeWidth={3} />
+                      <p className="text-sm font-medium">Add Address</p>
+                    </div>
+                    {receiptAddressList?.map((item, index) => (
+                    <div
+                      key={index}
+                      className={` ${
+                        !fatura ? "w-[92%]" : "w-[46%]"
+                      } h-auto flex flex-col gap-y-1`}
+                    >
+                      <div className="flex justify-between text-xs font-medium">
+                        <div className="flex gap-1">
+                          <input
+                            type="radio"
+                            name="example"
+                            value="option1"
+                            className="hover:cursor-pointer"
+                            defaultChecked={index === 0}
+                            onClick={() => dispatch(setAddress(item))}
+                          />
+                          <p className="m-0">{item.title}</p>
+                        </div>
+
+                        <div className="flex">
+                          <Trash2
+                            className="text-red-400 sm:ml-2 hover:cursor-pointer hover:text-red-600"
+                            size={16}
+                            onClick={() => onDelete(item.id)}
+                          />
+                          <a
+                            className="text-black hover:cursor-pointer"
+                            onClick={() => openModal("Update", index)}
+                          >
+                            Düzenle
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="flex-col min-h-[100px] bg-gray-200 rounded-md">
+                        <div className="flex w-full items-center justify-between">
+                          <h6 className="ml-2 mt-2 text-[#23A6F0] font-bold text-xs flex gap-x-1">
+                            <UserRound
+                              size={16}
+                              color="#23A6F0"
+                              strokeWidth={2.5}
+                            />
+                            {item.name} {item.surname}
+                          </h6>
+                          <h6 className="my-0 mr-2 flex gap-x-1 text-xs font-medium items-center">
+                            <Smartphone size={16} strokeWidth={2.5} />{" "}
+                            {item.phone}
+                          </h6>
+                        </div>
+                        <p className="ml-2 text-xs">
+                          {item.city} / {item.district} / {item.neighborhood} /{" "}
+                          {item.address}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
+      
         </div>
+        <OrderSummarySection/>
       </div>
     </section>
   );
