@@ -12,6 +12,9 @@ import {
   UPDATE_RECEIPT_ADDRESS_LIST,
   DELETE_RECEIPT_ADDRESS_LIST,
   SET_RECEIPT_ADDRESS_LIST,
+  DELETE_CARD,
+  UPDATE_CARD,
+  SET_ORDERS,
 } from "../actions/clientAction";
 
 const clientInitialState = {
@@ -49,6 +52,7 @@ const clientInitialState = {
       neighborhood: "Beldibi Mahallesi",
     },
   ],
+  orders:[],
   creditCards: [],
   roles: [],
   theme: "light",
@@ -187,8 +191,53 @@ const clientReducer = (state = clientInitialState, action) => {
 
       return state;
 
+      case DELETE_CARD:
+        return {
+          ...state,
+          creditCards: state.creditCards.filter(
+            (card) => card.id !== action.payload
+          ),
+        };
+
+      case UPDATE_CARD:
+        return {
+          ...state,
+          creditCards: state.creditCards.map(
+            (card) =>
+              card.id === action.payload.id
+                ? { ...card, ...action.payload } // id'si aynı olan adresi güncelle
+                : card // diğerlerini aynen bırak
+          ),
+        };
+
+
+
+        case SET_ORDERS:
+          // Gelen veri array ise, addressList'i baştan al
+          if (Array.isArray(action.payload)) {
+            return {
+              ...state,
+              orders: action.payload, // Gelen array ile güncelle
+            };
+          }
+    
+          // Gelen veri object ise, mevcut listeye ekle
+          if (typeof action.payload === "object") {
+            // Yeni id oluşturuyoruz, son elemanın id'sini alıp +1 ekliyoruz
+            const newId =
+              state.orders[state.addressList.length - 1]?.id + 1 || 1;
+    
+            return {
+              ...state,
+              orders: [...state.orders, { ...action.payload, id: newId }],
+            };
+          }
+    
+          return state;
     default:
       return state;
+     
+  
   }
 };
 

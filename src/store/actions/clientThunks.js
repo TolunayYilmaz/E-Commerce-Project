@@ -6,8 +6,11 @@ import {
   setAddressList,
   updateAddressList,
   deleteAddressList,
+  deleteCard,
+  updateCard,
   setReceiptAddressList,
   setCreditCards,
+  setOrder,
 } from "./clientAction.js";
 
 // Thunk: sadece roles boşsa API'den çek
@@ -186,6 +189,107 @@ export const getCardList = () => {
       console.log("çalıştı adrres" + response.data);
     } catch (err) {
       console.log("Adres listesi gelemedi.");
+    }
+  };
+};
+export const addCard = (data) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.post(
+        "https://workintech-fe-ecommerce.onrender.com/user/card",
+        data
+      );
+
+      dispatch(setCreditCards(data));
+    } catch (err) {
+      console.log("Adres listesi eklenmedi.", err);
+    }
+  };
+};
+export const deleteCardItem = (id) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.delete(
+        `https://workintech-fe-ecommerce.onrender.com/user/card/${id}`
+      );
+
+      dispatch(deleteCard(id));
+    } catch (err) {
+      console.log("listegüncel değil", err);
+    }
+  };
+};
+
+export const updateCardItem = (data) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.put(
+        "https://workintech-fe-ecommerce.onrender.com/user/card",
+        data
+      );
+
+      dispatch(updateCard(data));
+    } catch (err) {
+      console.log("listegüncel değil", err);
+    }
+  };
+};
+
+export const getOrders = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.get(
+        "https://workintech-fe-ecommerce.onrender.com/order"
+      );
+
+      dispatch(setOrder(response.data));
+ 
+      console.log("çalıştı adrres" + response.data);
+    } catch (err) {
+      console.log("Adres listesi gelemedi.");
+    }
+  };
+};
+export const addOrder = (data) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.post(
+        "https://workintech-fe-ecommerce.onrender.com/order",
+        data
+      );
+
+      dispatch(setOrder(data));
+    } catch (err) {
+      console.log("Adres listesi eklenmedi.", err);
     }
   };
 };

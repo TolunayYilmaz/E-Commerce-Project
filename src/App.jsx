@@ -17,12 +17,11 @@ import AboutUsPage from "./pages/AboutUsPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { useDispatch } from "react-redux";
-
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
-
 import { verifyToken } from "./store/actions/clientThunks.js";
 import BasketPage from "./pages/BasketPage.jsx";
 import AddressPage from "./pages/AddressPage.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +61,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path="/basket">
           <PageContent children={<BasketPage />} />
+        </PrivateRoute>
+        <PrivateRoute path="/order">
+          <PageContent children={<OrderPage />} />
         </PrivateRoute>
 
         {/* deneme token yoksa  logine yolla */}

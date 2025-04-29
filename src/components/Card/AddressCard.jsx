@@ -1,4 +1,4 @@
-import {Smartphone, Trash2, UserRound} from "lucide-react";
+import { Plus, Smartphone, Trash2, UserRound, X } from "lucide-react";
 export default function AddressCard({onChange,onDelete,openModal,index,item,fatura}){
 
     return( <div

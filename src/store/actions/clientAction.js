@@ -11,6 +11,9 @@ export const DELETE_ADDRESS_LIST="DELETE_ADDRESS_LIST";
 export const SET_RECEIPT_ADDRESS_LIST="SET_RECEIPT_ADDRESS_LIST";
 export const UPDATE_RECEIPT_ADDRESS_LIST="UPDATE_RECEIPT_ADDRESS_LIST";
 export const DELETE_RECEIPT_ADDRESS_LIST="DELETE_RECEIPT_ADDRESS_LIST";
+export const DELETE_CARD="DELETE_CARD";
+export const UPDATE_CARD="UPDATE_CARD";       
+export const SET_ORDERS="SET_ORDERS";       
 
 
 export const setUser = (user) => ({
@@ -80,4 +83,17 @@ export const updateReceiptAddress = (address) => ({
 export const deleteReceiptAddress = (addressId) => ({
   type: DELETE_RECEIPT_ADDRESS_LIST,
   payload: addressId,
+});
+export const deleteCard = (cardId) => ({
+  type: DELETE_CARD,
+  payload: cardId,
+});
+export const updateCard = (cardId) => ({
+  type: UPDATE_CARD,
+  payload: cardId,
+});
+
+export const setOrder = (cardId) => ({
+  type: SET_ORDERS,
+  payload: cardId,
 });

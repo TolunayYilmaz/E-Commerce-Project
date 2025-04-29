@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import ContactButton from "../../Button/ContactButton";
 
-import { useHistoryHook } from "../../../hooks/useHistoryHook";
-export default function OrderSummarySection(){
+
+export default function OrderSummarySection({click}){
     const summary = useSelector((state) => state.cart);
     const basket = useSelector((state) => state.cart.cart);
-    const goToPage=useHistoryHook();
+
     return( basket?.length > 0 && (
       <div className="bg-white border rounded-md shadow-md flex flex-col h-fit lg:w-[200px] xl:w-[225px] 2xl:w-[250px]">
       <div className="m-2 flex flex-col gap-2">
@@ -44,7 +44,7 @@ export default function OrderSummarySection(){
             py={"py-1"}
             textColor={"text-white"}
             buttonName={"Buy"}
-            push={() => goToPage("/basket/address")}
+            push={click}
           />
         </div>
       </div>

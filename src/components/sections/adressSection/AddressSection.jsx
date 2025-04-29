@@ -1,20 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import OrderSummarySection from "../orderSummarySection/OrderSummarySection";
-import { X,
-
-} from "lucide-react";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   addAddress,
+  addOrder,
   deleteAddress,
+  getOrders,
   updateAddress,
 } from "../../../store/actions/clientThunks";
 import React from "react";
-import { setAddress } from "../../../store/actions/shoppingCartAction";
+import {
+  deleteAll,
+  setAddress,
+} from "../../../store/actions/shoppingCartAction";
 import AddAddressCard from "../../Card/AddAddressCard";
 import AddressCard from "../../Card/AddressCard";
 import PaymentSection from "../paymentSection/PaymentSection";
+import { useHistoryHook } from "../../../hooks/useHistoryHook";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function AddressSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,11 +28,21 @@ export default function AddressSection() {
   const [selectedIndex, setSelectedIndex] = useState(null); // Seçili adresin index'i
   const [fatura, setFatura] = useState(true); // Fatura adresi kontrolü
   const [paymentOpen, setPaymentOpen] = useState(false);
+  const goToPage = useHistoryHook();
+  const notify = () => toast.success("Siparişiniz Oluşturuldu", {
+    autoClose: 350,
+    position: "top-right", // toast'ın konumu (isteğe bağlı)
+    hideProgressBar: false, // ilerleme çubuğunu göster
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+  });
 
   const addressList = useSelector((state) => state.client.addressList);
   const receiptAddressList = useSelector(
     (state) => state.client.receiptAddresses
   );
+  const order = useSelector((state) => state.cart);
   const basket = useSelector((state) => state.cart.cart);
   const address = useSelector((state) => state.cart.address);
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -69,6 +85,7 @@ export default function AddressSection() {
     if (addressList.length > 0) {
       dispatch(setAddress(addressList[0]));
     }
+    dispatch(getOrders());
   }, [addressList, dispatch]);
 
   const onSubmit = (data) => {
@@ -84,6 +101,31 @@ export default function AddressSection() {
   const onDelete = (id) => {
     dispatch(deleteAddress(id));
   };
+
+  function addOrderItem() {
+    const data = {
+      address_id: order.address.id,
+      order_date: new Date().toISOString(), // ISO format genellikle tercih edilir
+      card_no: order.payment.card_no,
+      card_name: order.payment.name_on_card,
+      card_expire_month: order.payment.expire_month,
+      card_expire_year: order.payment.expire_year,
+      card_ccv: 333,
+      price: order.totalAmount,
+      products: order.cart.map((item) => ({
+        product_id: item.product.id, // ya da item.product_id
+        count: item.count,
+        detail: item.product.name, // varsa örn: "açık mavi - xl"
+      })),
+    };
+
+    dispatch(addOrder(data));
+    dispatch(deleteAll());
+    setTimeout(() => {
+      goToPage("/shop");
+    }, 1000); // 0.5 saniye gecikme
+    notify();
+  }
 
   return (
     <section className="w-full sm:w-[80%] sm:mx-auto min-h-[400px] py-3 flex flex-col px-4  rounded-md bg-[#FAFAFA] mb-10">
@@ -168,7 +210,9 @@ export default function AddressSection() {
           <div className="flex flex-col gap-3 w-full lg:w-[820px]">
             <div className="bg-white w-full flex flex-col sm:flex-row rounded-md">
               <div
-                className="border rounded-t-md p-2 flex-1 sm:rounded-l-md hover:bg-gray-100 hover:cursor-pointer"
+                className={`border rounded-t-md p-2 flex-1 sm:rounded-l-md hover:cursor-pointer ${
+                  paymentOpen ? "bg-gray-100" : "bg-white"
+                }`}
                 onClick={() => setPaymentOpen(false)}
               >
                 <h5 className="m-0 text-[#23A6F0] font-bold text-sm sm:text-xl">
@@ -185,7 +229,9 @@ export default function AddressSection() {
               </div>
 
               <div
-                className="border rounded-b-md p-2 flex-1  sm:rounded-r-md hover:bg-gray-100 hover:cursor-pointer"
+                className={`border rounded-b-md p-2 flex-1  sm:rounded-r-md  hover:cursor-pointer ${
+                  !paymentOpen ? "bg-gray-100" : "bg-white"
+                }`}
                 onClick={() => setPaymentOpen(true)}
               >
                 <h5 className="m-0 text-[#23A6F0] font-bold text-lg sm:text-xl">
@@ -265,13 +311,12 @@ export default function AddressSection() {
                 </div>
               </div>
             )}
-            {paymentOpen && (
-           <PaymentSection/>
-            )}
+            {paymentOpen && <PaymentSection />}
           </div>
         </div>
-        <OrderSummarySection />
+        <OrderSummarySection click={() => addOrderItem()} />
       </div>
+      <ToastContainer/>
     </section>
   );
 }

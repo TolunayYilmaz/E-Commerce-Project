@@ -2,12 +2,11 @@ import { Plus, Minus, Trash2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../store/actions/shoppingCartAction";
 import OrderSummarySection from "../orderSummarySection/OrderSummarySection";
-
-
+import { useHistoryHook } from "../../../hooks/useHistoryHook";
 
 export default function BasketSection() {
   const basket = useSelector((state) => state.cart.cart);
-
+  const goToPage=useHistoryHook();
   const dispatch = useDispatch();
 
 
@@ -106,7 +105,7 @@ export default function BasketSection() {
             </div>
           ))}
         </div>
-       <OrderSummarySection/>
+            <OrderSummarySection click={() => goToPage("/basket/address")}/>
       </div>
     </section>
   );

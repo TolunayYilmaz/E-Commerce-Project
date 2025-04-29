@@ -1,19 +1,27 @@
 import { ShieldCheck, X } from "lucide-react";
 import CreditCardList from "../../CardList/creditCardList/CreditCardList";
-import { useSelector } from "react-redux";
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"; // react-hook-form import
+import { addCard } from "../../../store/actions/clientThunks";
+import { setPayment } from "../../../store/actions/shoppingCartAction";
 
 export default function PaymentSection() {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-
+  const dispatch = useDispatch();
+  const creditCardList = useSelector((state) => state.client.creditCards);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formHead, setFormHead] = useState("");
 
-  // useForm hook'u ile form kontrolü yapıyoruz
+  
+   useEffect(()=>{
+    dispatch(setPayment(creditCardList[0]));
+
+   },[])
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -21,6 +29,9 @@ export default function PaymentSection() {
     e.preventDefault();
     setIsModalOpen(true);
     setFormHead("Add a new Card");
+    if (formHead === "Add a new Card") {
+      reset();
+    }
   };
 
   const closeModal = () => {
@@ -29,6 +40,7 @@ export default function PaymentSection() {
 
   const onSubmit = (data) => {
     console.log(data); // Form verilerini işleme
+    dispatch(addCard(data));
     setIsModalOpen(false); // Modal'ı kapatıyoruz
   };
 
@@ -76,7 +88,7 @@ export default function PaymentSection() {
                 Aylık Ödeme
               </div>
               <div className="flex my-auto pl-2 gap-2">
-                <input type="radio" />
+                <input type="radio" checked={true}/>
                 <p className="m-0 text-xs">Tek Çekim</p>
               </div>
               <div className="border-l-[1px] pl-2 pt-2 text-xs">

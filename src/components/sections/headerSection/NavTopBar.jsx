@@ -182,6 +182,15 @@ export default function NavTopBar() {
                       >
                         Logout
                       </button>
+                      <button
+                        className="w-full text-sm text-white bg-[#23A6F0] hover:bg-[#3e9fd8] rounded px-2 py-1 mb-2"
+                        onClick={() => {
+                          setLoginDropdown(false);
+                          goToPage("/order")
+                        }}
+                      >
+                        Orders
+                      </button>
                     </div>
                   </div>
                 )}

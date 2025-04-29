@@ -2,11 +2,15 @@ import {
   SET_CART,
   SET_ADDRESS,
   SET_PAYMENT,
+  DELETE_ALL,
 } from "../actions/shoppingCartAction";
 const shoppingCartInitialState = {
   cart: [],
   payment: {},
   address: {},
+  totalAmount: 0,
+  cargoAmount: 0,
+  cargoFreeAmount: 4.99,
 };
 
 const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
@@ -50,6 +54,10 @@ const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
 
     case SET_PAYMENT:
       return { ...state, payment: action.payload };
+      case DELETE_ALL:
+        return {
+          ...shoppingCartInitialState,
+        };
 
     default:
       return state;
