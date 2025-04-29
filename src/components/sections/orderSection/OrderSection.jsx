@@ -63,7 +63,7 @@ export default function OrderSection() {
                     {item.products.map((product, index) => (
                       <div key={index} className="text-xs flex gap-2 px-2 py-1">
                         <p className="m-0">{product.name}</p>
-                        <p className="m-0">{product.count}</p>
+                        <p className="m-0">{product.count} Adet</p>
                       </div>
                     ))}
                   </div>
@@ -110,7 +110,7 @@ export default function OrderSection() {
                           className="text-xs flex gap-2 px-2 py-1"
                         >
                           <p className="m-0">{product.name}</p>
-                          <p className="m-0">{product.count}</p>
+                          <p className="m-0">{product.count} Adet</p>
                         </div>
                       ))}
                     </div>
