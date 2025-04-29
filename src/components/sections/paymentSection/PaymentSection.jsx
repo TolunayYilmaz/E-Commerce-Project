@@ -1,23 +1,19 @@
 import { ShieldCheck, X } from "lucide-react";
 import CreditCardList from "../../CardList/creditCardList/CreditCardList";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form"; // react-hook-form import
 import { addCard } from "../../../store/actions/clientThunks";
-import { setPayment } from "../../../store/actions/shoppingCartAction";
+
 
 export default function PaymentSection() {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const dispatch = useDispatch();
-  const creditCardList = useSelector((state) => state.client.creditCards);
+ 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formHead, setFormHead] = useState("");
 
-  
-   useEffect(()=>{
-    dispatch(setPayment(creditCardList[0]));
 
-   },[])
   const {
     register,
     handleSubmit,
