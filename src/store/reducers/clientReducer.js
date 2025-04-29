@@ -19,35 +19,35 @@ const clientInitialState = {
   addressList: [],
   receiptAddresses: [
     {
-      "id": 1,
-      "title": "Ev Adresi",
-      "name": "Mehmet",
-      "surname": "Demir",
-      "phone": "05322547895",
-      "city": "Ankara",
-      "district": "Çankaya",
-      "neighborhood": "Kocatepe Mahallesi"
+      id: 1,
+      title: "Ev Adresi",
+      name: "Mehmet",
+      surname: "Demir",
+      phone: "05322547895",
+      city: "Ankara",
+      district: "Çankaya",
+      neighborhood: "Kocatepe Mahallesi",
     },
     {
-      "id": 2,
-      "title": "İş Adresi",
-      "name": "Ayşe",
-      "surname": "Yılmaz",
-      "phone": "05347863210",
-      "city": "İstanbul",
-      "district": "Kadıköy",
-      "neighborhood": "Kozyatağı Mahallesi"
+      id: 2,
+      title: "İş Adresi",
+      name: "Ayşe",
+      surname: "Yılmaz",
+      phone: "05347863210",
+      city: "İstanbul",
+      district: "Kadıköy",
+      neighborhood: "Kozyatağı Mahallesi",
     },
     {
-      "id": 3,
-      "title": "Yazlık Adresi",
-      "name": "Ali",
-      "surname": "Kara",
-      "phone": "05356349210",
-      "city": "Muğla",
-      "district": "Marmaris",
-      "neighborhood": "Beldibi Mahallesi"
-    }
+      id: 3,
+      title: "Yazlık Adresi",
+      name: "Ali",
+      surname: "Kara",
+      phone: "05356349210",
+      city: "Muğla",
+      district: "Marmaris",
+      neighborhood: "Beldibi Mahallesi",
+    },
   ],
   creditCards: [],
   roles: [],
@@ -166,7 +166,26 @@ const clientReducer = (state = clientInitialState, action) => {
         ),
       };
     case SET_CREDIT_CARDS:
-      return { ...state, creditCards: action.payload };
+      if (Array.isArray(action.payload)) {
+        return {
+          ...state,
+          creditCards: action.payload, // Gelen array ile güncelle
+        };
+      }
+
+      // Gelen veri object ise, mevcut listeye ekle
+      if (typeof action.payload === "object") {
+        // Yeni id oluşturuyoruz, son elemanın id'sini alıp +1 ekliyoruz
+        const newId =
+          state.creditCards[state.creditCards.length - 1]?.id + 1 || 1;
+
+        return {
+          ...state,
+          creditCards: [...state.creditCards, { ...action.payload, id: newId }],
+        };
+      }
+
+      return state;
 
     default:
       return state;

@@ -159,7 +159,7 @@ export default function NavTopBar() {
                   onClick={() => setLoginDropdown((prev) => !prev)}
                 >
                   <Gravatar
-                    email={user.name}
+                    email={user.email}
                     size={100}
                     style={{
                       borderRadius: "50%",

@@ -20,7 +20,7 @@ import { useDispatch } from "react-redux";
 
 import PrivateRoute from "./components/privateRoute/PrivateRoute.jsx";
 
-import { getAddressList, verifyToken } from "./store/actions/clientThunks.js";
+import { verifyToken } from "./store/actions/clientThunks.js";
 import BasketPage from "./pages/BasketPage.jsx";
 import AddressPage from "./pages/AddressPage.jsx";
 
@@ -28,7 +28,6 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(verifyToken());
-    dispatch(getAddressList());
   }, [dispatch]);
 
   const ScrollToTop = () => {

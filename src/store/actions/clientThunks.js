@@ -7,6 +7,7 @@ import {
   updateAddressList,
   deleteAddressList,
   setReceiptAddressList,
+  setCreditCards,
 } from "./clientAction.js";
 
 // Thunk: sadece roles boşsa API'den çek
@@ -163,6 +164,28 @@ export const deleteAddress = (id) => {
       dispatch(deleteAddressList(id));
     } catch (err) {
       console.log("listegüncel değil", err);
+    }
+  };
+};
+
+
+export const getCardList = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    axios.defaults.headers.common["Authorization"] = token;
+
+    try {
+      const response = await axios.get(
+        "https://workintech-fe-ecommerce.onrender.com/user/card"
+      );
+
+      dispatch(setCreditCards(response.data));
+ 
+      console.log("çalıştı adrres" + response.data);
+    } catch (err) {
+      console.log("Adres listesi gelemedi.");
     }
   };
 };

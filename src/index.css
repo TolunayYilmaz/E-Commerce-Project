@@ -4,9 +4,10 @@
 
 html {
     scroll-behavior: auto !important; /* Scroll kayma animasyonunu devre dışı bırak */
+    
   }
 
-* {
+*{
 
     font-family: 'Montserrat', sans-serif;
     margin: 0;
