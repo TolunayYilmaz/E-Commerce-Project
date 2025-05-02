@@ -86,7 +86,7 @@ export default function NavTopBar() {
           <img
             src="./logo4_cropped.png"
             alt="logo"
-            className="w-[115px] h-[30px] sm:w-[180px] sm:h-[50px] object-cover object-left block "
+            className="w-[115px] h-[32px]  sm:w-[180px] sm:h-[50px] object-cover object-left block "
           />
 
           <div className="hidden sm:flex sm:gap-x-4">
@@ -264,7 +264,7 @@ export default function NavTopBar() {
               onClick={() => setBasketDropDown(true)}
               ref={basketDropdownRef}
             >
-              <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]" />
+              <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]  hover:text-[#23A6F0] sm:hidden hover:cursor-pointer hover:scale-105 transition-all duration-300" />
               <p className="sm:text-[#23A6F0] hidden sm:block">
                 {cart?.length}
               </p>
