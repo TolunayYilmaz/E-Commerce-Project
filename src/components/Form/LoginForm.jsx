@@ -22,7 +22,7 @@ export default function LoginForm() {
     if (error) {
       notify(error); // Hata varsa toastla göster
     } else if (Object.keys(user).length !== 0) {
-      history.goBack(); 
+      history.push("/shop")
    // Kullanıcı varsa yönlendir
     }
   }, [error, user]);

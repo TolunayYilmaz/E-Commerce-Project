@@ -40,19 +40,13 @@ export default function ShopPage() {
 
   return (
     <main>
-      {isLoading ? (
-        <div className="flex items-center justify-center">
-          {" "}
-          <CircularProgress size="150px" sx={{ color: "#23A6F0" }} />
-        </div>
-      ) : (
-        <>
-          {" "}
+
+
           <ShopHead cards={top5Categories} />
           <ShopMidProductsSection products={products} categoryId={categoryId} />
           <LogoCompaniesSection logos={logos} />
-        </>
-      )}
+    
+ 
     </main>
   );
 }

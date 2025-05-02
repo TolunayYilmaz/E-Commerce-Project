@@ -1,8 +1,10 @@
 import ShopCard from "../../Card/ShopCard"
-import dondurma from "../../../assets/images/dondurma.png";
-import et from "../../../assets/images/et.jpg";
-import elma from "../../../assets/images/elma.jpg";
+import dondurma from "../../../../public/assets/category-img/category_erkek_tişört.jpg";
+import et from "../../../../public/assets/category-img/category_kadın_tişört.jpg";
+import elma from "../../../../public/assets/category-img/category_kadın_elbise.jpg";
+
 import { useHistoryHook } from "../../../hooks/useHistoryHook.jsx";
+
 export default function ShopCardItems() {
   const goToPage = useHistoryHook();
   const cards = [

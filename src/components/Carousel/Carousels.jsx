@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import main from "../../assets/images/main.jpg";
+import main from "../../assets/images/team1.jpg";
 import CarouselButton from "../Button/CarouselButton";
 
 export default function Carousels() {
@@ -20,7 +20,7 @@ export default function Carousels() {
               className="h-[640px] relative 2xl:h-full sm:w-full object-cover brightness-50"
             />
 
-            <div className="absolute top-36 sm:top-[35%] sm:left-1/2 transform sm:-translate-x-1/2 sm:-translate-y-1/2 z-16 flex justify-between gap-10 items-center flex-col text-white">
+            <div className="absolute top-36 sm:top-96 sm:left-1/2 transform sm:-translate-x-1/2 sm:-translate-y-1/2 z-16 flex justify-between gap-10 items-center flex-col text-white">
               <h1 className="font-bold">GROCERIES DELIVERY</h1>
               <h4 className="w-[89%] text-center font-normal">{item}</h4>
               <CarouselButton buttonName={"Start Now"} />

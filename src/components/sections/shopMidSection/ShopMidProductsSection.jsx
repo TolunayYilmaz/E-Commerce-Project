@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import ShopPageMidCardItems from "../../CardList/shopMidList/ShopPageMidCardItems";
 import ShopMidBot from "./ShopMidBot";
 import ShopMidHead from "./ShopMidHead";
