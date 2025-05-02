@@ -27,6 +27,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(verifyToken());
+
   }, [dispatch]);
 
   const ScrollToTop = () => {

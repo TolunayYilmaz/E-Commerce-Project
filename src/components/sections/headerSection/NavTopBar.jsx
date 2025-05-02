@@ -84,7 +84,8 @@ export default function NavTopBar() {
     <section>
       <header className="pt-10 flex flex-col gap-20 h-auto bg-[#F6F6F6] sm:bg-white pb-10 sm:pb-4 sm:h-24 relative">
         <div className="flex justify-around items-center">
-          <h3 className="text-2xl font-bold text-[#252B42]">Bandage</h3>
+        
+          <img src="./logo2.png" alt="logo" className="w-[220px] object-cover h-[50px] " />
 
           <div className="hidden sm:flex sm:gap-x-4">
             <Button buttonName={"Home"} push={() => goToPage("/")} />
