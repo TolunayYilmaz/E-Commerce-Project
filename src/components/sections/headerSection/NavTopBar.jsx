@@ -16,8 +16,7 @@ import { logout } from "../../../store/actions/clientThunks.js";
 import BasketSumCard from "../../CardList/basketCardList/BasketSumCard.jsx";
 
 export default function NavTopBar() {
-
-  const cart=useSelector((state)=>state.cart.cart)
+  const cart = useSelector((state) => state.cart.cart);
   const goToPage = useHistoryHook();
   const [showDropdown, setShowDropdown] = useState(false);
   const [loginDropdown, setLoginDropdown] = useState(false);
@@ -84,9 +83,11 @@ export default function NavTopBar() {
     <section>
       <header className="pt-10 flex flex-col gap-20 h-auto bg-[#F6F6F6] sm:bg-white pb-10 sm:pb-4 sm:h-24 relative">
         <div className="flex justify-around items-center">
-        
-       
-       <img src="./logo4.png" alt="logo" className="w-[220px] object-cover h-[50px] " />
+          <img
+            src="./logo4_cropped.png"
+            alt="logo"
+            className="w-[115px] h-[30px] sm:w-[180px] sm:h-[50px] object-cover object-left block "
+          />
 
           <div className="hidden sm:flex sm:gap-x-4">
             <Button buttonName={"Home"} push={() => goToPage("/")} />
@@ -188,7 +189,7 @@ export default function NavTopBar() {
                         className="w-full text-sm text-white bg-[#23A6F0] hover:bg-[#3e9fd8] rounded px-2 py-1 mb-2"
                         onClick={() => {
                           setLoginDropdown(false);
-                          goToPage("/order")
+                          goToPage("/order");
                         }}
                       >
                         Orders
@@ -238,8 +239,6 @@ export default function NavTopBar() {
                             setLoginDropdown(false);
                             goToPage("/login");
                           }}
-                        
-                        
                         >
                           Login
                         </button>
@@ -249,7 +248,6 @@ export default function NavTopBar() {
                             setLoginDropdown(false);
                             goToPage("/signup");
                           }}
-                   
                         >
                           Sign Up
                         </button>
@@ -267,10 +265,10 @@ export default function NavTopBar() {
               ref={basketDropdownRef}
             >
               <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]" />
-              <p className="sm:text-[#23A6F0] hidden sm:block">{cart?.length}</p>
-              {basketDropDown && (
-              <BasketSumCard/>
-              )}
+              <p className="sm:text-[#23A6F0] hidden sm:block">
+                {cart?.length}
+              </p>
+              {basketDropDown && <BasketSumCard />}
             </div>
             <AlignRight
               className="h-6 text-[#3C403D] mb-3 sm:mb-0 hover:text-[#23A6F0] sm:hidden hover:cursor-pointer hover:scale-105 transition-all duration-300"
@@ -285,11 +283,41 @@ export default function NavTopBar() {
 
         {visible && (
           <div className="w-32 mx-auto flex justify-center flex-col items-center gap-[30px] sm:hidden">
-            <Button buttonName={"Home"} push={() => goToPage("/")} />
-            <Button buttonName={"Shop"} push={() => goToPage("/shop")} />
-            <Button buttonName={"About"} push={() => goToPage("/about")} />
-            <Button buttonName={"Contact"} push={() => goToPage("/contact")} />
-            <Button buttonName={"Team"} push={() => goToPage("/Team")} />
+            <Button
+              buttonName={"Home"}
+              push={() => {
+                goToPage("/");
+                toggleVisible();
+              }}
+            />
+            <Button
+              buttonName={"Shop"}
+              push={() => {
+                goToPage("/shop");
+                toggleVisible();
+              }}
+            />
+            <Button
+              buttonName={"About"}
+              push={() => {
+                goToPage("/about");
+                toggleVisible();
+              }}
+            />
+            <Button
+              buttonName={"Contact"}
+              push={() => {
+                goToPage("/contact");
+                toggleVisible();
+              }}
+            />
+            <Button
+              buttonName={"Team"}
+              push={() => {
+                goToPage("/Team");
+                toggleVisible();
+              }}
+            />
           </div>
         )}
       </header>
