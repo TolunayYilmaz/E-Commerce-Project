@@ -11,20 +11,20 @@ import { setFilter, setOffset } from "../../../store/actions/productAction";
 export default function ShopMidHead({ categoryId }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
-
   const [sort, setSort] = useState("price:asc");
   const [input, setInput] = useState("");
 
-  // Güncel filtre stringini her yerde doğru oluştur
   const buildFilterString = (sortValue = sort, inputValue = input) => {
     return `&filter=${inputValue}&sort=${sortValue}`;
   };
+
   let category = categoryId > 0 ? categoryId : 1;
+
   const handleSortChange = (event) => {
     const selectedSort = event.target.value;
-    setSort(selectedSort); // state'i güncelle
+    setSort(selectedSort);
     dispatch(setOffset(0));
-    const currentFilter = buildFilterString(selectedSort); // güncel filtre oluştur
+    const currentFilter = buildFilterString(selectedSort);
     dispatch(setFilter(currentFilter));
     dispatch(getFilterProducts(category, currentFilter));
     console.log("Kategorii" + category);
@@ -40,25 +40,39 @@ export default function ShopMidHead({ categoryId }) {
   };
 
   return (
-    <div className="w-[252px] h-[168px] mx-auto flex flex-col justify-around gap-3 sm:flex-row sm:justify-between sm:w-[72.84%] sm:items-center sm:gap-0">
-      <h6 className="flex justify-center text-[#737373] text-sm font-bold">
-        Showing all 12 results
-      </h6>
+    <div className="w-full px-4 py-4 flex flex-col items-center mb-4 gap-4 sm:flex-row sm:justify-between xl:w-[80%] xl:mx-auto ">
+      {/* Üst Bilgi */}
+      <div className="text-center sm:text-left">
+        <h6 className="text-[#737373] text-sm font-bold">
+          Showing all 12 results
+        </h6>
+      </div>
 
-      <div className="flex justify-around text-[#737373] items-center sm:gap-3">
-        <h6 className="font-bold text-sm">Views:</h6>
-        <div className="border w-11 h-11 flex justify-center items-center rounded-md">
+      {/* Görünüm Seçimi */}
+      <div className="flex items-center justify-center gap-3">
+        <h6 className="font-bold text-sm text-[#737373]">Views:</h6>
+        <div className="border w-11 h-11 flex justify-center items-center rounded-md cursor-pointer">
           <Grid2x2 color="#000000" strokeWidth={1.5} size={18} />
         </div>
-        <div className="border w-11 h-11 flex justify-center items-center rounded-md">
+        <div className="border w-11 h-11 flex justify-center items-center rounded-md cursor-pointer">
           <ListChecks strokeWidth={1.5} size={18} />
         </div>
       </div>
 
-      <div className="flex justify-between sm:w-[252px] sm:flex-row sm:gap-3">
-        <div className="relative">
+      {/* Arama ve Filtre Bölümü */}
+      <div className="flex flex-col w-[70%] gap-3 sm:w-auto sm:flex-row sm:items-center sm:justify-end">
+        <input
+          type="text"
+          className="w-full sm:w-[100px] md:w-[150px]  bg-[#F9F9F9] rounded-md border px-2 py-2 text-sm"
+          placeholder="Search..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+
+        {/* Sıralama Seçimi */}
+        <div className="relative w-full sm:w-auto">
           <select
-            className="appearance-none bg-[#F9F9F9] border font-normal text-gray-700 py-3 px-7 rounded-[5px] leading-tight focus:outline-none focus:border-red-500"
+            className="w-full appearance-none bg-[#F9F9F9] border font-normal text-gray-700 py-2 px-4 rounded-[5px] leading-tight focus:outline-none focus:border-red-500"
             onChange={handleSortChange}
             value={sort}
           >
@@ -68,7 +82,7 @@ export default function ShopMidHead({ categoryId }) {
             <option value="rating:asc">Rating: Low to High</option>
             <option value="rating:desc">Rating: High to Low</option>
           </select>
-          <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <div className="absolute inset-y-0 right-2 flex items-center pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-700"
               fill="none"
@@ -85,23 +99,8 @@ export default function ShopMidHead({ categoryId }) {
           </div>
         </div>
 
-        <div
-          className="relative"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <FooterButton buttonName={"Filter"} onClick={handleFilterClick} />
-          {isOpen && (
-            <div className="mt-2 px-3 py-3 w-[200%] z-10 bg-gray-300 rounded absolute top-[48px] right-0">
-              <input
-                type="text"
-                className="w-full"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </div>
-          )}
-        </div>
+        {/* Filtre Butonu */}
+        <FooterButton buttonName={"Filter"} onClick={handleFilterClick} />
       </div>
     </div>
   );

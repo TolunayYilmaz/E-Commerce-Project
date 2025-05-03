@@ -8,7 +8,6 @@ import {
   deleteAddressList,
   deleteCard,
   updateCard,
-  setReceiptAddressList,
   setCreditCards,
   setOrder,
 } from "./clientAction.js";

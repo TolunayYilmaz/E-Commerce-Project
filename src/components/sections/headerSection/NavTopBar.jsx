@@ -264,7 +264,7 @@ export default function NavTopBar() {
               onClick={() => setBasketDropDown(true)}
               ref={basketDropdownRef}
             >
-              <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]  hover:text-[#23A6F0] sm:hidden hover:cursor-pointer hover:scale-105 transition-all duration-300" />
+              <ShoppingCart className="h-6 mb-3 text-[#3C403D] sm:text-[#23A6F0]  hover:text-[#23A6F0]  hover:cursor-pointer hover:scale-105 transition-all duration-300" />
               <p className="sm:text-[#23A6F0] hidden sm:block">
                 {cart?.length}
               </p>

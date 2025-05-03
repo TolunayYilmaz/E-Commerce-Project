@@ -5,7 +5,7 @@ export default function FooterButton({ buttonName, textSize, onClick }) {
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.95 }}
       onHoverStart={() => console.log("hover started!")}
-      className={`px-6 py-3 bg-[#23A6F0] font-bold text-white rounded-[5px] ${textSize} `}
+      className={`px-6 py-2 bg-[#23A6F0] font-bold text-white rounded-[5px] ${textSize} `}
       onClick={onClick}
     >
       {buttonName}
